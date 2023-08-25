@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+<h1 align="center">
+  Bolsa de Trabajo 
+  <br>
+  <img src="./src/assets/img/logo_utn.png" alt="downshift logo" title="downshift logo" width="300">
+  <br>
+</h1>
+<p align="center" style="font-size: 1.2rem;"> Página simple <b>en desarrollo</b> donde alumnos de la UTN FRRO podrán postularse a ofertas de trabajo y a las empresas subir dichas ofertas</p>
+ 
+<hr /> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The problem
+Ocurre que es incomodo navegar a través de la bolsa de trabajo de la facultad por diferentes motivos: 
 
-## Available Scripts
+**Diseño antiguo**: posee una apariencia visual desactualizada, con colores poco atractivos y fuentes difíciles de leer. Además, de poseer una estructura poco intuitiva que puede llevar a una experiencia frustrante para los usuarios.
 
-In the project directory, you can run:
+**Información innecesaria:** El home cuenta con información que es innecesaria para el usuario tales como los identificadores de cada trabajo (ver captura del Home desde Desktop)
 
-### `npm start`
+**No es responsive**: El hecho de que la página web no sea responsive puede causar problemas de visualización y dificultar la navegación en dispositivos móviles, tabletas u otros dispositivos con pantallas más pequeñas. Los usuarios pueden experimentar dificultades para leer el contenido, hacer zoom constantemente o desplazarse tanto horizontalmente sobre el listado de trabajos disponibles como verticalmente en el detalle de cada uno, lo que afecta negativamente su experiencia. (Ver captura del Home desde Mobile)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Ausencia de registro histórico**: La falta de un registro histórico implica que la página web no guarda un historial detallado sobre las postulaciones de los usuarios a los trabajos. Esto puede ser problemático cuando los usuarios requieran de esta información.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**No abarca todas las necesidades de los usuarios**:  se crearon canales alternativos, no oficiales, donde los alumnos suben información sobre puestos de trabajos disponibles en las empresas donde están actualmente trabajando. 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## This solution
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La idea es solventar estos problemas rediseñando el frontend a través de la metodólogía mobile-fist y teniendo en cuenta las buenas prácticas para la accesibilidad. Así como extender las funciones que ofrece la bolsa de trabajo
+Funciones
+Permite a empresas interesadas 
+Subir ofertas de trabajos 
+Ver los usuarios que se postularon y su CV
+Permite a los administradores:
+Dar de bajas trabajos de manera manual, así como seguramente modificar información de los trabajos publicados.
+Dar da alta trabajos
+Permitir a los usuarios 
+Postularse a trabajos disponibles
+Subir trabajos.
+Administrar el estado de su postulación: Esto es, una vez un usuario se haya postulado a un trabajo sea capaz de poder registrar los diferentes estados por lo que pasa, ej: 
+Postulado -> Sin respuesta 
+Postulado -> Entrevista inicial -> Entrevista técnica -> Trabajo conseguido
+Subir información relacionada a los Datos Personales, Datos Universitarios, CV, otros (tags) y ver un historial de los trabajos aplicados. -->

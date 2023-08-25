@@ -8,7 +8,7 @@
  
 <hr /> 
 
-## The problem
+<!-- ## The problem
 Ocurre que es incomodo navegar a través de la bolsa de trabajo de la facultad por diferentes motivos: 
 
 **Diseño antiguo**: posee una apariencia visual desactualizada, con colores poco atractivos y fuentes difíciles de leer. Además, de poseer una estructura poco intuitiva que puede llevar a una experiencia frustrante para los usuarios.
@@ -39,4 +39,4 @@ Subir trabajos.
 Administrar el estado de su postulación: Esto es, una vez un usuario se haya postulado a un trabajo sea capaz de poder registrar los diferentes estados por lo que pasa, ej: 
 Postulado -> Sin respuesta 
 Postulado -> Entrevista inicial -> Entrevista técnica -> Trabajo conseguido
-Subir información relacionada a los Datos Personales, Datos Universitarios, CV, otros (tags) y ver un historial de los trabajos aplicados. -->
+Subir información relacionada a los Datos Personales, Datos Universitarios, CV, otros (tags) y ver un historial de los trabajos aplicados. --> -->

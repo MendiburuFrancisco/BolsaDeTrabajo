@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 // import './App.css';
 import Home from './pages/Home/index.js';
-import JobCard from './components/JobCard.js';
+import JobCard from './components/ui/JobCard.js';
 import Navbar from './components/ui/Navbar.js';
 import JobDescription from './components/ui/JobDescription';
 import 'tailwindcss/tailwind.css';

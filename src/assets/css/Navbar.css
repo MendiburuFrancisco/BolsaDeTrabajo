@@ -1,0 +1,17 @@
+
+  /* si la resolucion es de celular hago desaparecer algunas cosas */
+  @media (max-width: 768px) {
+    .navbar
+    { 
+      width: 100%;
+    }
+    .logo-navbar {
+      display: none;
+    }
+    .desktopbutton{
+      display: none;
+    }
+    .cellphonebutton{
+      display: block;
+    }
+  }

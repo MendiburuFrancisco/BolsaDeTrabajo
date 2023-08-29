@@ -1,0 +1,50 @@
+
+/*crear variables para almacenar tres diferentes tipos de colores y su version para oscuro */
+
+:root {
+    
+    /* Fondo claro */
+    --main-bg-color: rgb(204, 204, 204);
+    --secondary-bg-color: rgb(86, 86, 86);
+    --third-bg-color: rgb(61, 61, 61);
+    /* Fondo oscuro */
+    --main-bg-color-dark: rgb(61, 61, 61);
+    --secondary-bg-color-dark: rgb(86, 86, 86);
+    --third-bg-color-dark: rgb(204, 204, 204);
+
+    /* Texto claro */
+    --main-text-color: rgb(0, 0, 0);
+    --secondary-text-color: rgb(255, 255, 255);
+    --third-text-color: rgb(255, 255, 255);
+
+    --h1-font-size: 24px;
+    --h2-font-size: 20px;
+    
+    /* Texto oscuro */
+    --main-text-color-dark: rgb(255, 255, 255);
+    --secondary-text-color-dark: rgb(255, 255, 255);
+    --third-text-color-dark: rgb(0, 0, 0);
+    
+    /* Botones */
+    --main-button-color: rgb(0, 0, 0);
+    --secondary-button-color: rgb(255, 255, 255);
+    --third-button-color: rgb(255, 255, 255);
+
+    /* Botones oscuro */
+    --main-button-color-dark: rgb(255, 255, 255);
+    --secondary-button-color-dark: rgb(255, 255, 255);
+    --third-button-color-dark: rgb(0, 0, 0);
+
+  }
+
+h1 { 
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+}
+
+h2
+{
+    color: var(--main-text-color);
+    /* background-color: var(--main-bg-color); */
+    font-size: var(--h2-font-size);
+}

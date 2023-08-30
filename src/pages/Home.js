@@ -1,6 +1,5 @@
 import JobCard from "./../components/ui/JobCard.js";
 import JobCard2 from "./../components/ui/MyCard.js";
-import Navbar from "./../components/ui/Navbar.js";
 import JobDescription from "./../components/ui/JobDescription";
 import StudentLayout from "./../layouts/Student.js";
 let trabajos = [
@@ -106,7 +105,6 @@ function Home() {
             ))}
         </div>
         <div className="lg:col-span-8 md:col-span-12 ">
-        
           <JobDescription
             title="Desarrollador de Software"
             subtitle="Bolsa de Trabajo"
@@ -115,7 +113,6 @@ function Home() {
             button1Label="Volver atras"
             button2Label="Postularme"
             />
-          
         </div>
 
       </body>

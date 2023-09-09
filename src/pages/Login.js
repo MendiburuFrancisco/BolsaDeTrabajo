@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from './../layouts/Register';
-import Logo from './../assets/img/logo_utn.png'
+//import Logo from './../assets/img/logo_utn.png'
 import LogoNegro from './../assets/img/logo-utn-n.png'
 import './../assets/css/Login.css'
 import Footer from "../components/ui/Footer.js";
@@ -55,7 +55,7 @@ class Login extends Component {
             Login
         </button>
         <br/>
-        <Link to={"/login/GetAccount"}> GetBackAccount
+        <Link to={"/login/GetAccount"}> 
         <p className=' text-gray-400 text-sm'>¿Como obtengo una cuenta ?</p>
         </Link>
         {/* Register Button ** no me parece necesario tener esta funcion xq los alumnos ingresan a la pagina ya con una cuenta activa SIEMPRE

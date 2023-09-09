@@ -1,6 +1,7 @@
 import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
+import { Link } from 'react-router-dom'
 //Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
   constructor({ type, svg, text }) {
@@ -30,7 +31,9 @@ const Navbar = ({ buttons }) => {
       {/* Left side with search bar */}
       {/* add an image */}
       <a className="logo-navbar flex items-center pl-4 space-x-4 inline-block" href="#">
+        <Link to={"/"}>
         <img src={UTN_LOGO} alt="logo" className=" h-10" />
+        </Link>
         <div className="inline-block text-white" >Bolsa de Trabajo</div>
       </a>
       
@@ -41,6 +44,8 @@ const Navbar = ({ buttons }) => {
           placeholder="Buscar trabajos"
           className="rounded-l-full py-1 px-4 focus:outline-none w-72"
         />
+        
+          {/* Search */}
         <button className="rounded-r-full text-gray-700 px-4" title="Buscar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +62,6 @@ const Navbar = ({ buttons }) => {
             />
           </svg>
 
-          {/* Search */}
         </button>
       </div>
 

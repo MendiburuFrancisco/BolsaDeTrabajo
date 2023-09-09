@@ -3,7 +3,7 @@ import UTN_LOGO from "./../../assets/img/logo_utn.png";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-700 text-white flex justify-evenly items-center mt-8 ">
+    <div className="bg-gray-700 text-white flex justify-evenly items-center  ">
         <div >
         <img src={UTN_LOGO} alt="logo" className=" h-10" />
 

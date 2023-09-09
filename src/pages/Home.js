@@ -1,3 +1,4 @@
+import Footer from "../components/ui/Footer.js";
 import JobCard from "./../components/ui/JobCard.js";
 //import JobCard2 from "./../components/ui/MyCard.js";
 import JobDescription from "./../components/ui/JobDescription";
@@ -90,9 +91,9 @@ Acerca del equipo
 
 function Home() {
   return (
-
+    <>
     <StudentLayout className> 
-    <body className="grid grid-cols-12 gap-12 justify-items-center p-4">
+    <body className="grid grid-cols-12 gap-12 justify-items-center p-4 ">
         <div className="lg:col-span-4 md:col-span-12 ">
         
           {trabajos.map((trabajo, index) => (
@@ -116,10 +117,12 @@ function Home() {
             button2Label="Postularme"
             />
         </div>
-
+        
       </body>
+      
     </StudentLayout>
- 
+    <Footer/>
+    </>
   );
 }
 

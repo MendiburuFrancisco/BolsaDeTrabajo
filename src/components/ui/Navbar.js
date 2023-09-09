@@ -29,9 +29,12 @@ const Navbar = ({ buttons }) => {
     <nav className=" navbar flex items-center justify-between p-2 bg-gray-700">
       {/* Left side with search bar */}
       {/* add an image */}
-      <a className="logo-navbar flex items-cente pl-4 space-x-4" href="#">
+      <a className="logo-navbar flex items-center pl-4 space-x-4 inline-block" href="#">
         <img src={UTN_LOGO} alt="logo" className=" h-10" />
+        <div className="inline-block text-white" >Bolsa de Trabajo</div>
       </a>
+      
+
       <div className="rounded-full p-2 bg-white flex items-center">
         <input
           type="text"

@@ -1,7 +1,7 @@
 import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
-
+//Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
   constructor({ type, svg, text }) {
     // super(props);
@@ -14,10 +14,7 @@ class NavBarButton extends React.Component {
   render() {
     return (
       <button
-        className={
-          this.type +
-          " flex items-center space-x-2 text-white px-4 py-2 rounded"
-        }
+        className={ this.type + " flex items-center space-x-2 text-white px-4 py-2 rounded" }
         title={this.text}
       >
         {this.svg}
@@ -66,13 +63,13 @@ const Navbar = ({ buttons }) => {
         {buttons.map((button, index) => (
           <button
             key={index}
-            className=" 
-        desktopbutton text-white px-4 py-2 rounded"
+            className="desktopbutton text-white px-4 py-2 rounded"
           >
             {button}
           </button>
         ))}
 
+          {/*boton hamburguesa*/}
         <NavBarButton
           type="cellphonebutton hidden"
           svg={

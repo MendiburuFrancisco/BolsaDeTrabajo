@@ -1,5 +1,5 @@
 import JobCard from "./../components/ui/JobCard.js";
-import JobCard2 from "./../components/ui/MyCard.js";
+//import JobCard2 from "./../components/ui/MyCard.js";
 import JobDescription from "./../components/ui/JobDescription";
 import StudentLayout from "./../layouts/Student.js";
 let trabajos = [
@@ -10,7 +10,7 @@ let trabajos = [
       txt: "IMPLEMENTADOR/DESARROLLADOR",
     },
     requirement: null,
-    speciality: ["ISI", "IQ"],
+    speciality: ["ISI", " IQ"],
     link: "\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t",
     type: "Bolsa de Trabajo",
     startDate: null,
@@ -43,7 +43,7 @@ let trabajos = [
     endDate: null,
   },
 ];
-
+//le agregamos esta variable como un campo mas a cada objeto??
 let lorem_30paragraphs = `Con la supervisión adecuada, tendrás que relevar equipos en campo, pasar la información 
 relevada en campo a planillas Excel. También, deberás hacer lectura de planes de 
 mantenimiento indicados por fabricantes en manuales para confeccionar planes de
@@ -73,7 +73,7 @@ Acerca del equipo
         *       Días flex de estudio
         *       14 días de vacaciones (pasados los primeros 6 meses de contrato)`;
 
-const mostrarTrabajosDisponibles = (jobs) => {
+/*const mostrarTrabajosDisponibles = (jobs) => {
   return jobs.map((job) => {
     return (
       <JobCard2
@@ -84,7 +84,7 @@ const mostrarTrabajosDisponibles = (jobs) => {
       />
     );
   });
-};
+};*/
 
 
 
@@ -104,6 +104,8 @@ function Home() {
             />
             ))}
         </div>
+        {/*como vincular la JobCard con su JobDescription?? evento onclick y hidden? */}
+        {/* Hacer array de JobDescription para cada JobCard? */}
         <div className="lg:col-span-8 md:col-span-12 ">
           <JobDescription
             title="Desarrollador de Software"

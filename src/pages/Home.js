@@ -119,9 +119,9 @@ function Home() {
         </div>
         
       </body>
-      
+      <Footer/>
     </StudentLayout>
-    <Footer/>
+    
     </>
   );
 }

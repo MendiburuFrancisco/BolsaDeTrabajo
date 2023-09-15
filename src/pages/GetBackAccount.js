@@ -10,6 +10,7 @@ const GetBackAccount = () => {
       <header className="header">
         {/*hay q quitar barra de busqueda*/}
         <Navbar
+          esconde= {' hidden' } 
           buttons={[     ]}
         />
       </header>

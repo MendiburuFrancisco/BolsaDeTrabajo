@@ -6,6 +6,7 @@ const GetAccount = () => {
     <div className='App bg-gray-800 h-100 '>
 
         <Navbar
+          esconde= {' hidden' } 
           buttons={[     ]}
         />
         <div className='w-1/2 text-center mx-auto my-20 border-white-500 border-l-2 ' >

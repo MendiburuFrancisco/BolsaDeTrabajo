@@ -4,11 +4,14 @@ import ContactInfo from '../components/ui/ContactInfo'
 import CVUpload from '../components/ui/CVUpload'
 import Navbar from '../components/ui/Navbar'
 import { Link } from 'react-router-dom'
+import UniversityInfo from '../components/ui/UniversityInfo'
+import Skill from '../components/ui/Skill'
 
 const Settings = () => {
   return (
     <>
     <Navbar
+          esconde= {' hidden' } 
           buttons={[    
 
             //campanita
@@ -43,12 +46,23 @@ const Settings = () => {
             </svg>,
            ]}
         />
+
+    {/* <h1 className="text-2xl font-semibold mb-4">Detalles del postulante</h1> */}
+        {/* deberiamos tratar de hacer en esta pagina varias solapitas(4) para los distintos tipos de datos del usuario , 
+        como en la pagina original */}
     <div className="container mx-auto py-8">
       <h1 className="text-2xl font-semibold mb-4">Datos Personales</h1>
       <PersonalInfo />
+
+      {/*este componente se podria colocar al lado de PersonalInfo con flex*/}
       <h1 className="text-2xl font-semibold mb-4">Informacion de contacto</h1>
       <ContactInfo />
       <CVUpload />
+      <h1 className="text-2xl font-semibold mb-4">Datos Universitarios</h1>
+      <UniversityInfo/>
+      <h1 className="text-2xl font-semibold mb-4">Conocimientos</h1>
+      <Skill/>
+      
       <button className="px-4 py-2 bg-gray-700 text-white rounded">
           Guardar
       </button>

@@ -25,7 +25,7 @@ class NavBarButton extends React.Component {
   }
 }
 
-const Navbar = ({ buttons }) => {
+const Navbar = ({ buttons, esconde  }) => {
   return (
     <nav className=" navbar flex items-center justify-between p-2 bg-gray-700">
       {/* Left side with search bar */}
@@ -37,15 +37,15 @@ const Navbar = ({ buttons }) => {
         <div className="inline-block text-white" >Bolsa de Trabajo</div>
       </a>
       
-
-      <div className="rounded-full p-2 bg-white flex items-center">
+      {/* Search */}
+      <div className={`rounded-full p-2 bg-white flex items-center ${esconde}`}> 
         <input
           type="text"
           placeholder="Buscar trabajos"
           className="rounded-l-full py-1 px-4 focus:outline-none w-72"
         />
         
-          {/* Search */}
+          
         <button className="rounded-r-full text-gray-700 px-4" title="Buscar">
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -3,9 +3,10 @@
 
 function Register(children) {
   return (
-    <div className="App bg-gray-800 "> 
+    <div className="App bg-gray-800  "> 
       <header className="header">
         <Navbar
+          esconde= {' hidden' } 
           buttons={[ 
           ]}
         />
@@ -14,9 +15,7 @@ function Register(children) {
       {/* <main> */}
           {children.children} 
       {/* </main> */}
-    <footer>
-        
-    </footer>
+    
     </div>
   );
 }

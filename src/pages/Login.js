@@ -22,7 +22,7 @@ class Login extends Component {
 
    return   <Layout >
     <>
-    <div className="login-card bg-white-100 p-6 rounded-lg  shadow-md min-w-fit " >
+    <div className="login-card bg-white-100 p-6 rounded-lg  shadow-md min-w-fit  mb-8" >
     
         <img className="login-logo  shadow-md  w-40" alt="logo" src={LogoNegro} />
         

@@ -19,24 +19,29 @@ return <svg xmlns="http://www.w3.org/2000/svg" fill={ filled ===true ? "black" :
 
 }
 
-const Card = ({title,type,specialitys}) => {
+
+const Card = ({id,title,type,specialitys}) => {
+  const id_car = "card-"+id;
+  const handleClick = () => {
+    // setSelectedJob({ title, subtitle, subSubtitle, text, button1Label, button2Label });
+  }
+
+
   return (
- 
-    
-    <div className="card rounded text-black mb-4 shadow-md bg-white">
-    <div className="flex justify-between p-4 items-center mb-1">
-      <strong className=" font-bold me-4">{title}</strong>
-      <div className="flex">
-        <span className="text-blue-500 text-xl">{iconVerified}</span>
-        <span className="text-black-500 text-xl mr-2 ">{iconSave(true)}</span>
+    <div id={id_car} className="card rounded text-black mb-4 shadow-md bg-white hover:bg-blue-200" onClick={handleClick}>
+      <div className="flex justify-between p-4 items-center mb-1">
+        <strong className=" font-bold me-4">{title}</strong>
+        <div className="flex">
+          <span className="text-blue-500 text-xl">{iconVerified}</span>
+          <span className="text-black-500 text-xl mr-2 ">{iconSave(true)}</span>
+        </div>
+      </div>
+      <p className="opacity-70 text-left  pl-4 mb-3">{specialitys}</p>
+      <div className="bg-gray-900 text-white p-2 ">
+        {/* <div className="bg-gray-900 text-white p-2 rounded-b-lg"> */}
+        <p className="text-left">{type}</p>
       </div>
     </div>
-    <p className="opacity-70 text-left  pl-4 mb-3">{specialitys}</p>
-    <div className="bg-gray-900 text-white p-2 ">
-    {/* <div className="bg-gray-900 text-white p-2 rounded-b-lg"> */}
-      <p className="text-left">{type}</p>
-    </div>
-  </div>
   );
 };
 

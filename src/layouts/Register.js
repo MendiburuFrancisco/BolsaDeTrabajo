@@ -1,4 +1,5 @@
  import Navbar from "../components/ui/Navbar.js"; 
+ import Footer from "../components/ui/Footer.js";
 
 
 function Register(children) {
@@ -12,9 +13,12 @@ function Register(children) {
         />
       </header>
 
-      {/* <main> */}
+      <main className=" h-[calc(90vh-0px)] ">
           {children.children} 
-      {/* </main> */}
+      </main>
+
+      <Footer />
+
     
     </div>
   );

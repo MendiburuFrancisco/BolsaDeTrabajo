@@ -142,7 +142,6 @@ class Login extends Component {
                 ¿Como obtengo una cuenta?
               </p>
             </Link>
-          <div className="bg-gray-700 block w-full mt-5 h-5"/>
           </div>
           </div>
 

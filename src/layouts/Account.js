@@ -1,8 +1,10 @@
  import Navbar from "../components/ui/Navbar.js"; 
  import Footer from "../components/ui/Footer.js";
+ import AccountCard from "../components/ui/account/account.card";
 
 
-function Register(children) {
+
+function Account(children) {
   return (
     <div className="App bg-gray-800  "> 
       <header className="header">
@@ -13,8 +15,10 @@ function Register(children) {
         />
       </header>
 
-      <main className=" h-[calc(90vh-0px)] ">
+      <main className=" h-[calc(90vh-0px)]  ">
+        <AccountCard>
           {children.children} 
+          </AccountCard>
       </main>
 
       <Footer />
@@ -24,4 +28,4 @@ function Register(children) {
   );
 }
 
-export default Register;
+export default Account;

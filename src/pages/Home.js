@@ -1,11 +1,12 @@
-import JobCard from "./../components/ui/JobCard.js";
-import JobDescription from "./../components/ui/JobDescription";
-import StudentLayout from "./../layouts/Student.js";
+import JobCard from "../components/ui/JobCard.js";
+import JobDescription from "../components/ui/JobDescription.js";
+import StudentLayout from "../layouts/Student.js";
 // import  UseFetch  from "../hooks/UseFetch.js";
 import { fetchData } from "../hooks/fetchData.js";
 import React, { Suspense } from "react";
 
 const apiData = fetchData("/jobs");
+
 function Home() {
   const trabajos = apiData.read();
   return (
@@ -23,7 +24,7 @@ function Home() {
                 specialitys={"..."}
                 description={"..."}
               />
-            }
+            } 
           >
             <div className="lg:col-span-4 md:col-span-12  ">
               {trabajos?.map((trabajo, index) => (

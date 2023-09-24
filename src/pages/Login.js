@@ -1,11 +1,13 @@
 import React, { Component, Suspense } from "react";
-import Layout from "./../layouts/Register";
-//import Logo from './../assets/img/logo_utn.png'
+import Layout from "../layouts/Account";
 import LogoNegro from "./../assets/img/logo-arania.png";
 import "./../assets/css/Login.css";
+import FormInput from "../components/form/FormInput";
 import { Link } from "react-router-dom";
-// import fetchData from "../hooks/fetchData.js";
-import { fetchData } from "../hooks/fetchData.js";
+// import { fetchData } from "../hooks/fetchData.js";
+import useAuth  from "../hooks/useAuth.js";
+import  AccountCard  from "../components/ui/account/account.card.js";
+import PrimaryButton from "../components/ui/PrimaryButton.js";
 
 class Login extends Component {
   constructor(props) {
@@ -18,16 +20,7 @@ class Login extends Component {
     };
   }
 
-  fetchLogin(data) {
-    const result = fetchData("/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return result.read();
-  }
+ 
 
   handlerLogin = () => {
     const { email, password } = this.state;
@@ -35,15 +28,13 @@ class Login extends Component {
       this.setState({ error: "Debe completar todos los campos" });
       return;
     }
-    const resultData = this.fetchLogin({ email, password });
-
-    console.log(resultData);
-
-    if (resultData?.token) {
-      localStorage.setItem("token", resultData.token);
-      this.props.history.push("/settings");
-    } else {
-      this.setState({ error: resultData.message });
+    const response = useAuth.login({ email, password });
+    if (response){
+      this.props.history.push("/home");
+    }else{
+      // cambio de color el boton a rojo
+      this.setState({ error: "Usuario o contraseña incorrecta" });
+      this.document.getElementById("login_button").className = "block w-full  bg-red-500 text-white py-2 rounded hover:bg-gray-700 transition duration-300 ";
     }
   };
 
@@ -51,8 +42,9 @@ class Login extends Component {
     return (
       <Layout>
         <>
-          <div className="login-card bg-white-100  rounded-lg  shadow-md min-w-fit  mb-8 flex items-center justify-center">
-            <div>
+     
+
+
 
             
             <div className="flex justify-center">
@@ -75,11 +67,11 @@ class Login extends Component {
                   Usuario
                 </label>
                 <div className="flex items-center justify-between">
-                  <input
+                  
+                  <FormInput
                     type="text"
                     id="usuario"
                     // placeholder="                         "
-                    className="block w-full w-64 px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
                     required
                     // value={this.state.email}
                     // onChange={(event) =>  setEmail(event.target.value)}
@@ -100,7 +92,7 @@ class Login extends Component {
                     Contraseña
                   </label>
                   <div className="text-sm">
-                    <Link to={"/login/GetBackAccount"}>
+                    <Link to={"/login/password/reset"}>
                       <p className="text-sm font-semibold text-blue-500 hover:text-blue-800">
                         ¿Olvidaste la contraseña?
                       </p>
@@ -108,10 +100,9 @@ class Login extends Component {
                   </div>
                 </div>
                 <div>
-                  <input
+                  <FormInput
                     type="password"
                     id="password"
-                    className="block w-full w-64 px-3 py-2 border rounded focus:outline-none focus:ring focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
                     // onChange={(event) => setPasswordHandler(event.target.value)}
 
                     required
@@ -128,22 +119,16 @@ class Login extends Component {
                   </div>
                 }
               >
-                <button
-                  id="login_button"
-                  className="block w-full  bg-blue-500 text-white py-2 rounded hover:bg-gray-700 transition duration-300 "
-                >
-                  Ingresar
-                </button>
+               <PrimaryButton text="Ingresar"/>
               </Suspense>
             </form>
 
-            <Link to={"/login/GetAccount"}>
+            <Link to={"/singin"}>
               <p className="text-gray-600 text-sm hover:text-gray-900 mt-2">
                 ¿Como obtengo una cuenta?
               </p>
             </Link>
-          </div>
-          </div>
+ 
 
         </>
       </Layout>

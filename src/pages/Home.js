@@ -5,15 +5,15 @@ import StudentLayout from "../layouts/Student.js";
 import { fetchData } from "../hooks/fetchData.js";
 import React, { Suspense } from "react";
 
-const apiData = fetchData("/jobs");
 
+const apiData = fetchData("/jobs");
 function Home() {
   const trabajos = apiData.read();
   return (
     <>
-      <StudentLayout className=" flex items-center justify-center">
+      <StudentLayout className="flex items-center justify-center h-[calc(100vh-0px)]">
         {/* <h3 className="text  text-left text-white">Se encontraron N oportunidades de trabajo </h3> */}
-        <body className="grid grid-cols-12 gap-12 m-4">
+        <body className="grid lg:grid-cols-12 md:grid-cols-12 lg:gap-12 md:gap-12 m-4 ">
           {/* <body className="grid grid-cols-12 gap-12 justify-items-center "> */}
           <Suspense
             fallback={
@@ -26,7 +26,7 @@ function Home() {
               />
             } 
           >
-            <div className="lg:col-span-4 md:col-span-12  ">
+            <div className="lg:col-span-4 md:col-span-5  sm:col-span-10">
               {trabajos?.map((trabajo, index) => (
                 <JobCard
                   id={trabajo.id}
@@ -39,7 +39,7 @@ function Home() {
             </div>
           </Suspense>
 
-          <div className="lg:col-span-8 md:col-span-12 ">
+          <div className="lg:col-span-8 md:col-span-7  sm:col-span-10">
             <JobDescription
               title={trabajos?.[0].titulo}
               subtitle={trabajos?.[0].tipo}
@@ -56,3 +56,4 @@ function Home() {
 }
 
 export default Home;
+

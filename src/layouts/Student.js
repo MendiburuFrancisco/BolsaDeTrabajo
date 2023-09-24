@@ -65,7 +65,7 @@ function Student(children) {
         />
       </header>
 
-      <main className="h-[calc(100vh-0px)]">
+      <main>
           {children.children} 
       </main>
 

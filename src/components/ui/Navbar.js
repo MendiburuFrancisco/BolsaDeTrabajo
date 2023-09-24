@@ -1,7 +1,7 @@
 import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 //Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
   constructor({ type, svg, text }) {
@@ -15,7 +15,10 @@ class NavBarButton extends React.Component {
   render() {
     return (
       <button
-        className={ this.type + " flex items-center space-x-2 text-white px-4 py-2 rounded" }
+        className={
+          this.type +
+          " flex items-center space-x-2 text-white px-4 py-2 rounded"
+        }
         title={this.text}
       >
         {this.svg}
@@ -25,27 +28,30 @@ class NavBarButton extends React.Component {
   }
 }
 
-const Navbar = ({ buttons, esconde  }) => {
+const Navbar = ({ buttons, esconde }) => {
   return (
     <nav className=" navbar flex items-center justify-between p-2 bg-gray-700">
       {/* Left side with search bar */}
       {/* add an image */}
-      <a className="logo-navbar flex items-center pl-4 space-x-4 inline-block" href="#">
+      <a
+        className="logo-navbar flex items-center pl-4 space-x-4 inline-block"
+        href="#"
+      >
         <Link to={"/"}>
-        <img src={UTN_LOGO} alt="logo" className=" h-10" />
+          <img src={UTN_LOGO} alt="logo" className=" h-10" />
         </Link>
-        <div className="inline-block text-white" >Bolsa de Trabajo</div>
+        <div className="inline-block text-white">Bolsa de Trabajo</div>
       </a>
-      
+
       {/* Search */}
-      <div className={`rounded-full p-2 bg-white flex items-center ${esconde}`}> 
+      <div className={`rounded-full p-2 bg-white flex items-center ${esconde}`}>
         <input
           type="text"
           placeholder="Buscar trabajos"
-          className="rounded-l-full py-1 px-4 focus:outline-none w-72"
+          className="rounded-l-full py-1 px-4 focus:outline-none lg:w-72 sm:w-50 "
+          // className="rounded-l-full py-1 px-4 focus:outline-none w-[calc(56%-120px)] ]"
         />
-        
-          
+
         <button className="rounded-r-full text-gray-700 px-4" title="Buscar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +67,6 @@ const Navbar = ({ buttons, esconde  }) => {
               d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
-
         </button>
       </div>
 
@@ -76,7 +81,7 @@ const Navbar = ({ buttons, esconde  }) => {
           </button>
         ))}
 
-          {/*boton hamburguesa*/}
+        {/*boton hamburguesa*/}
         <NavBarButton
           type="cellphonebutton hidden"
           svg={
@@ -103,3 +108,4 @@ const Navbar = ({ buttons, esconde  }) => {
 };
 
 export default Navbar;
+

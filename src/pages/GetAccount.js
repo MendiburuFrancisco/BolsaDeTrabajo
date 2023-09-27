@@ -30,6 +30,15 @@ const GetAccount = () => {
               <br/>
               No olvides propiciar tus datos y CV una vez que ingreses al sistema. De otra manera, no podrás postularte a ninguna vacante.
               </p>
+              <br/>
+              <br/>
+              <p className="text-xl font-semibold text-white">
+              Busco ofrecer trabajos, ¿cómo lo hago?</p>
+                <p className='text-white'>Para el caso de empresas deberas completar la solicitud de alta 
+                en nuestra bolsa de trabajo haciendo click <a class="boton" href='../'>aquí</a>.</p>
+  
+              
+
         </div>
         
       

@@ -2,6 +2,8 @@ import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
 import { Link } from "react-router-dom";
+import Filter from "./Filter.js";
+
 //Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
   constructor({ type, svg, text }) {
@@ -30,7 +32,9 @@ class NavBarButton extends React.Component {
 
 const Navbar = ({ buttons, esconde }) => {
   return (
-    <nav className=" navbar flex items-center justify-between p-2 bg-gray-700">
+    <>
+    
+    <nav className=" navbar w-full top-0 left-0 flex items-center justify-between p-2 bg-gray-700 fixed">
       {/* Left side with search bar */}
       {/* add an image */}
       <a
@@ -103,7 +107,11 @@ const Navbar = ({ buttons, esconde }) => {
           text="Menu"
         />
       </div>
+
     </nav>
+          <div className="flex items-center justify-center h-16"/>
+    
+    </>
   );
 };
 

@@ -41,7 +41,7 @@ const iconSave = (filled) => {
   );
 };
 
-const Card = ({ id, title, type, specialitys }) => {
+const Card = ({ id, title, type, specialitys,chequeado }) => {
   const id_car = "card-" + id;
 
   const handleClick = () => {
@@ -71,9 +71,14 @@ const Card = ({ id, title, type, specialitys }) => {
       <div className="flex justify-between p-4 items-center mb-1">
         <strong className=" font-bold me-4">{title}</strong>
         <div className="flex">
-          <span className="text-blue-500 text-xl" title="Este trabajo fue subido de forma oficial por la facultad" aria-label="Este trabajo fue subido de forma oficial por la facultad">{iconVerified}</span>
+          
+          {
+
+            chequeado == true ? <span className="text-blue-500 text-xl cursor-help" title="Este trabajo fue subido de forma oficial por la facultad" aria-label="Este trabajo fue subido de forma oficial por la facultad">{iconVerified}</span> : null
+          }
+          
           <span
-            className={id+"-save text-black-500 text-xl mr-2 hover:text-blue-500 transition duration-300 "}
+            className={id+"-save text-black-500 text-xl mr-2 hover:text-blue-500 transition duration-300 cursor-pointer in "}
             onClick={handleSaveButton}
           >
             {iconSave(false)}

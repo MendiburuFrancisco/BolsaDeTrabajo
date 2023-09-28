@@ -3,6 +3,7 @@ import JobCard from "../components/ui/JobCard.js";
 import JobDescription from "../components/ui/JobDescription.js";
 import StudentLayout from "../layouts/Student.js";
 import { fetchData } from "../hooks/fetchData.js";
+import JobFilters from "../components/ui/JobFilter.js";
 
 const apiData = fetchData("/jobs");
 
@@ -19,6 +20,8 @@ function Home() {
   return (
     <>
       <StudentLayout className="flex items-center justify-center h-[calc(100vh-0px)]">
+    <JobFilters/>
+      
         <div role="main" className="grid lg:grid-cols-12 md:grid-cols-12 lg:gap-12 md:gap-12 m-4">
           <Suspense fallback={<div>Loading...</div>}>
             <div className="lg:col-span-4 md:col-span-5 sm:col-span-10">

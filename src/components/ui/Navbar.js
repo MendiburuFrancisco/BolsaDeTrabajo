@@ -38,13 +38,13 @@ const Navbar = ({ buttons, esconde }) => {
       {/* Left side with search bar */}
       {/* add an image */}
       <a
-        className="logo-navbar flex items-center pl-4 space-x-4 inline-block"
+        className="logo-navbar  items-center pl-4 space-x-4 inline-block"
         href="#"
       >
         <Link to={"/"}>
-          <img src={UTN_LOGO} alt="logo" className=" h-10" />
+          <img src={UTN_LOGO} alt="logo" className=" h-8" />
+          <div className="inline-block text-white">Bolsa de Trabajo</div>
         </Link>
-        <div className="inline-block text-white">Bolsa de Trabajo</div>
       </a>
 
       {/* Search */}

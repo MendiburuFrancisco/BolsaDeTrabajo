@@ -16,7 +16,7 @@ function Account(children) {
       </header>
 
       <main className=" h-[calc(90vh-0px)] ">
-        <AccountCard>
+        <AccountCard >
           {children.children} 
           </AccountCard>
       </main>

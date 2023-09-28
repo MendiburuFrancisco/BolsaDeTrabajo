@@ -1,9 +1,20 @@
-.login-card {
-    width:400px;
+.auth-card,.login-card {
+
     margin: 0 auto;
     margin-top: 30px;
-    /* padding: 20px 0 20px 0;  */
-    padding: 20px; 
     background-color: #fff;
     box-shadow: 2 0 5px #ccc;
+
+
 }
+
+
+.login-card {
+    width:400px; 
+    /* padding: 20px 0 20px 0;  */
+    padding: 20px; 
+
+
+    
+}
+ 

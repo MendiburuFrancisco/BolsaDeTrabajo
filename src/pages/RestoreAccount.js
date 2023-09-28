@@ -8,7 +8,7 @@ const GetBackAccount = () => {
   return (
     <Layout>
  
-      <div className="login-card" >
+      <div className="login-card " >
 
         <div className="flex justify-center">
           <img className="login-logo w-40" alt="logo" src={LogoNegro} />

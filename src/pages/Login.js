@@ -1,7 +1,6 @@
 // UI-Imports
 import Layout from "../layouts/Account";
 import LogoNegro from "./../assets/img/logo-arania.png";
-import "./../assets/css/Login.css";
 import FormInput from "../components/form/FormInput";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../components/ui/PrimaryButton.js";
@@ -60,7 +59,7 @@ const Login = () => {
   };
 
   return (
-    <Layout className=" h-[calc(100vh-0px)]">
+    <Layout className="login-card h-[calc(100vh-0px)]" >
  
         <div className="flex justify-center">
           <img className="login-logo w-40" alt="logo" src={LogoNegro} />

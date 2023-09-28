@@ -2,7 +2,9 @@ import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
 import { Link } from "react-router-dom";
-import Filter from "./JobFilter.js";
+// import Filter from "./JobFilter.js";
+// import { HomeIcon } from '@heroicons/react/20/solid'
+
 
 //Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {

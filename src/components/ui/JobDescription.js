@@ -26,12 +26,12 @@ const JobDescription = ({
           <h3 className="text-gray-600 mt-1 text-left">
             Este trabajo fue subido por <b>{subidoPor.nombreApellido}</b>
           </h3>
-          {chequeado && (
+          {chequeado? (
             <CheckBadgeIcon
               className="text-blue-400 h-6 w-6 ms-3"
               aria-label="Este trabajo fue subido de forma oficial por la facultad"
-            />
-          )}
+            /> )
+            : null}
         </div>
 
         <div className="flex items-center text-gray-600 mt-1">

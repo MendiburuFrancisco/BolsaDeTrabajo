@@ -1,11 +1,11 @@
  
 import Navbar from "./../components/ui/Navbar.js"; 
 import { Link } from 'react-router-dom'
- 
+import Footer from "../components/ui/Footer.js";
 
 function Student(children) {
   return (
-    <div className="App bg-gray-800 h-100 ">
+    <div className="App  bg-gray-800   ">
  
     {/* <div className="App bg-gray-800 h-100 grid grid-row-1 gap-1"> */}
     {/* <div className="App bg-gray-800 h-100 grid grid-cols-1 gap-0 "> */}
@@ -65,9 +65,11 @@ function Student(children) {
         />
       </header>
 
-      {/* <main> */}
+      <main>
           {children.children} 
-      {/* </main> */}
+      </main>
+
+      <Footer />
     
     </div>
   );

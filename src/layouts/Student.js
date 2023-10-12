@@ -8,7 +8,7 @@ import { HomeIcon, UserIcon, BookmarkIcon //} from "@heroicons/react/outline";
  
 function Student(children) {
   return (
-    <div className="App  bg-gray-800   ">
+    <div className="App  bg-gray-800 ">
       {/* <div className="App bg-gray-800 h-100 grid grid-row-1 gap-1"> */}
       {/* <div className="App bg-gray-800 h-100 grid grid-cols-1 gap-0 "> */}
       <header className="header">
@@ -30,7 +30,7 @@ function Student(children) {
 
       <main>{children.children}</main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,11 +1,14 @@
 import React from "react";
 import {useForm} from '../../hooks/useForm';
 import FormInput from '../form/FormInput';
+import PrimaryButton from './PrimaryButton';
 import PrimaryLink from './PrimaryLink';
 // import LogoNegro from '../../assets/img/logo-utn-n.png';
 import LogoNegro from '../../assets/img/logo-arania.png';
 import Axios from "axios";
 import Swal from 'sweetalert2'
+
+import { registerCompanyRequest } from "../../api/auth.request";
 
 function RegistrationComponent() {
 
@@ -19,7 +22,7 @@ function RegistrationComponent() {
       }); 
         const handleSubmit = (e) => {
           e.preventDefault()
-          Axios.post("http://localhost:8888/auth/company/register",{
+          registerCompanyRequest({
           cuit:values.cuit,
           razon_social:values.razon_social,
           email:values.email,
@@ -44,7 +47,6 @@ function RegistrationComponent() {
           console.log(values.cuit,values.razon_social, values.email, values.direccion, values.telefono, )
           })
         
-        console.log(values.cuit,values.razon_social, values.email, values.telefono, values.direccion)
         reset()
     }
       
@@ -90,6 +92,7 @@ function RegistrationComponent() {
         <div className="text-lg font-bold text-center">Registro
         <p className="text-sm text-center text-gray-600">Para empresas</p>
         </div>
+        <form>
           <div className="space-y-2">
             <label
               htmlFor="cuit"
@@ -188,11 +191,10 @@ function RegistrationComponent() {
             
           </div>
           <div className="card text-center card-footer text-muted">
-        {
-          <button className='rounded bg-cyan-600 px-6 pb-2 pt-2.5 font-medium text-white hover:bg-cyan-700 ' onClick={handleSubmit}>Registrarme</button>
-        }   
-        </div>
-      
+        
+          <button className='rounded w-full bg-cyan-600 mt-3 px-6 pb-2 pt-2.5 font-medium text-white hover:bg-cyan-700 ' onClick={handleSubmit}>Registrarme</button>
+        
+        </div>     
 
         <div className="text-center mt-2">
           <PrimaryLink
@@ -201,6 +203,7 @@ function RegistrationComponent() {
             text="¿Tenés cuenta?"
           />
         </div>
+        </form>
       </section>
     </div>
   );

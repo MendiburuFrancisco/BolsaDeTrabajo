@@ -88,7 +88,7 @@ const Login = () => {
                 required
                 ariaLabel="Ingrese su usuario"
               />
-              <p className="text-md font-semibold  font-medium   text-black-500 ms-2">
+              <p className="text-md font-semibold   text-black-500 ms-2">
                 @frro.utn.edu.ar
               </p>
             </div>

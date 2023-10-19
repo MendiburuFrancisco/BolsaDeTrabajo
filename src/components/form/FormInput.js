@@ -10,7 +10,7 @@ const FormInput = ({type, id, value,placeholder, onChange,ariaLabel,required}) =
       onChange={onChange}
       aira-label={ariaLabel}
       title={ariaLabel}
-      className="block w-full px-3 py-2 border rounded focus:outline-none  focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+      className="block w-full h-14 px-3 py-2 border rounded focus:outline-none  focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
       {...required?{required:true}:{required:false}}
 
     />

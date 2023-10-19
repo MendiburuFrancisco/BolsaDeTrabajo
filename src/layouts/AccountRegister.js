@@ -7,7 +7,6 @@ function AccountRegister(children) {
       <header className="header">
         <Navbar esconde={" hidden"} buttons={[]} />
       </header>
-      <br/>
 
       <main className=" h-[calc(100vh-0px)] text-left ">
         <div className="auth-card lg:w-9/12 sm:w-fit  rounded-lg   mb-8 flex items-center justify-center">
@@ -19,8 +18,9 @@ function AccountRegister(children) {
       <br/>
       <br/>
       <br/>
-
-
+      <br/>
+      <br/>
+      <br/>
       <Footer />
     </div>
   );

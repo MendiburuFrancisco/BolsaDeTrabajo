@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import {useForm} from '../../hooks/useForm';
 import FormInput from '../form/FormInput';
 import PrimaryLink from './PrimaryLink';
 // import LogoNegro from '../../assets/img/logo-utn-n.png';
 import LogoNegro from '../../assets/img/logo-arania.png';
-import Axios from "axios";
 import Swal from 'sweetalert2'
+import axios from "axios";
+import { InputLabel, TextField} from '@material-ui/core';
+
+//import { registerCompanyRequest } from "../../api/auth.request";
 
 function RegistrationComponent() {
+  const [errorMail, setErrorMail] = useState({
+    errorMail: false,
+    message: "",
+  });
+  const [errorPassword, setErrorPassword] = useState({
+    errorPassword: false,
+    message: "",
+  });
+
+  const emailValidation = (email) => {
+    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return regex.test(email);
+  };
+  const passwordValidation = (password) => {
+    const regex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*.,-])(?=.{8,})/ ;
+    return regex.test(password);
+  };
 
  const [values, handleInputChange, reset] = useForm({
         cuit: '',
@@ -19,7 +39,31 @@ function RegistrationComponent() {
       }); 
         const handleSubmit = (e) => {
           e.preventDefault()
-          Axios.post("http://localhost:8888/auth/company/register",{
+          if (!emailValidation((values.email))) {
+            setErrorMail({
+              errorMail: true,
+              message: "El email no es valido. Debe ser del tipo email@example.com",
+            });
+            return;
+          }
+          console.log((values.email));
+          setErrorMail({
+            errorMail: false,
+            message: "",
+          });
+          if (!passwordValidation((values.password))) {
+            setErrorPassword({
+              errorPassword: true,
+              message: "Debe contener como mínimo 8 caracteres y al menos uno de cada tipo (mayúsculas, minúsculas, números y caracteres especiales)",
+            });
+            return;
+          }
+          console.log((values.password));
+          setErrorPassword({
+            errorPassword: false,
+            message: "",
+          });
+          axios.post("http://localhost:8888/auth/company/register",{
           cuit:values.cuit,
           razon_social:values.razon_social,
           email:values.email,
@@ -44,7 +88,6 @@ function RegistrationComponent() {
           console.log(values.cuit,values.razon_social, values.email, values.direccion, values.telefono, )
           })
         
-        console.log(values.cuit,values.razon_social, values.email, values.telefono, values.direccion)
         reset()
     }
       
@@ -90,13 +133,14 @@ function RegistrationComponent() {
         <div className="text-lg font-bold text-center">Registro
         <p className="text-sm text-center text-gray-600">Para empresas</p>
         </div>
+        <form onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <label
+            <InputLabel
               htmlFor="cuit"
               className="block text-sm font-medium text-gray-700"
             >
               CUIT
-            </label>
+            </InputLabel>
             
             <FormInput
               type="text"
@@ -108,12 +152,13 @@ function RegistrationComponent() {
               required
             />
 
-            <label
+
+            <InputLabel
               htmlFor="razon_social"
               className="block text-sm font-medium text-gray-700"
             >
               Razon social
-            </label>
+            </InputLabel>
             <FormInput
               type="text"
               id="razon_social"
@@ -124,12 +169,12 @@ function RegistrationComponent() {
               required
             />
 
-            <label
+            <InputLabel
               htmlFor="direccion"
               className="block text-sm font-medium text-gray-700"
             >
               Direccion
-            </label>
+            </InputLabel>
             <FormInput
               type="text"
               id="direccion"
@@ -139,12 +184,12 @@ function RegistrationComponent() {
               ariaLabel="Direccion"
               required
             />
-            <label
+            <InputLabel
               htmlFor="telefono"
               className="block text-sm font-medium text-gray-700"
             >
               Telefono
-            </label>
+            </InputLabel>
             <FormInput
               type="number"
               id="telefono"
@@ -154,46 +199,48 @@ function RegistrationComponent() {
               ariaLabel="Telefono"
               required
             />
-            <label
+            <InputLabel
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
               Email
-            </label>
-            <FormInput
-              type="email"
-              id="email"
-              placeholder="Email"
-              value={values.email}
-              onChange={handleInputChange}
-              ariaLabel="Email"
-              required
+            </InputLabel>
+            <TextField
+      className="block w-full px-3 py-2 border rounded focus:outline-none  focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+      id="email"
+            type="email"
+            variant="outlined"
+            placeholder="Email"
+            helperText={errorMail.message}
+            value={values.email}
+            onChange={handleInputChange}
             />
-            <label
+            <InputLabel
               htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
               Contraseña
-            </label>
-            <FormInput
-              type="password"
-              id="password"
-              placeholder="Contraseña"
-              value={values.password}
-              onChange={handleInputChange}
-              ariaLabel="password"
-              required
+            </InputLabel>
+            <TextField
+            className="block w-full px-3 py-2 border rounded focus:outline-none  focus:border-blue-300  shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+            variant="outlined"
+            id="password"
+            type="password"
+            placeholder="Contraseña"
+            error={errorPassword.errorPassword}
+            helperText={errorPassword.message}
+            value={values.password}
+            onChange={handleInputChange}
             />
 
             
           </div>
-          <div className="card text-center card-footer text-muted">
-        {
-          <button className='rounded bg-cyan-600 px-6 pb-2 pt-2.5 font-medium text-white hover:bg-cyan-700 ' onClick={handleSubmit}>Registrarme</button>
-        }   
-        </div>
-      
-
+              
+        <button type="submit" className="block w-full mt-3 h-14 bg-blue-500 text-white py-2 rounded hover:bg-gray-700 transition duration-300 "
+>
+            Registrarme
+            </button> 
+</form>
         <div className="text-center mt-2">
           <PrimaryLink
             id="login"

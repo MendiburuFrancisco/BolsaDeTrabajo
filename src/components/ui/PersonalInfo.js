@@ -56,7 +56,7 @@ function PersonalInfo() {
   };
 
   return (
-    <div className="mb-4 w-1/3">
+    <div className="mb-4">
       <label className="block font-semibold mb-1">Nombre:</label>
       <input
         type="text"

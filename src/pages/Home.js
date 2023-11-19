@@ -53,11 +53,13 @@ function Home() {
               text={selectedJob.descripcion}
               chequeado={selectedJob.chequeado}
               subidoPor={selectedJob.usuario}
+
               fechaDesde={selectedJob.fecha_desde}
               fechaHasta={selectedJob.fecha_hasta}
               // job={selectedJob}
               // button1Label="Volver atras"
               // button2Label="Postularme"
+
             />
           </div>
         </div>

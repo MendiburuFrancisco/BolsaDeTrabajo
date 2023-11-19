@@ -1,5 +1,4 @@
 import React from "react";
-
 import "tailwindcss/tailwind.css";
 
 import { CheckBadgeIcon, BookmarkIcon } from "@heroicons/react/24/outline";
@@ -10,6 +9,7 @@ const iconSave = (filled) => {
 };
 
 const Card = ({ id, title, type, specialitys, chequeado }) => {
+
   const id_car = "card-" + id;
 
   const handleClick = () => {
@@ -22,7 +22,9 @@ const Card = ({ id, title, type, specialitys, chequeado }) => {
     if (saveIcon) {
       if (saveIcon.innerHTML === iconSave(true)) {
         saveIcon.innerHTML = iconSave(false);
-      } else {
+      }
+      else {
+
         saveIcon.innerHTML = iconSave(true);
       }
     }
@@ -31,13 +33,16 @@ const Card = ({ id, title, type, specialitys, chequeado }) => {
   return (
     <div
       id={id_car}
+
       className="card rounded text-black mb-4 shadow-md bg-white hover:bg-blue-100  transition duration-300"
+
       onClick={handleClick}
       // style={{ transition: "all 0.9s ease-in-out" }}
     >
       <div className="flex justify-between p-4 items-center mb-1">
         <strong className=" font-bold me-4">{title}</strong>
         <div className="flex">
+
           {chequeado == true ? (
             <span
               className="text-blue-500 text-xl cursor-help"

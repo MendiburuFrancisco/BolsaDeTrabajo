@@ -15,6 +15,14 @@ function AccountRegister(children) {
       </main>
       <br/>
       <br/>
+
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
       <Footer />
     </div>
   );

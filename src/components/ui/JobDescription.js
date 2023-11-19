@@ -1,12 +1,11 @@
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
 import PrimaryLink from "./PrimaryLink.js";
+
 import { useState } from "react";
 import FormInput from "../form/FormInput"
 import { BriefcaseIcon, CheckBadgeIcon, BuildingLibraryIcon, CalendarDaysIcon, BookmarkIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
 import { updateJobRequest } from "../../api/jobs.request";
-
-
 
 
 const JobDescription = ({
@@ -107,12 +106,14 @@ const JobDescription = ({
           <h3 className="text-gray-600 mt-1 text-left">
             Este trabajo fue subido por <b>{subidoPor.nombreApellido}</b>
           </h3>
+
           {chequeado? (
             <CheckBadgeIcon
               className="text-blue-400 h-6 w-6 ms-3"
               aria-label="Este trabajo fue subido de forma oficial por la facultad"
             /> )
             : null}
+
         </div>
 
         <div className="flex items-center text-gray-600 mt-1">
@@ -127,6 +128,7 @@ const JobDescription = ({
 
         <div className="flex mt-1 text-gray-400">
           <div className="flex items-center pe-3">
+
             <DateElement date={fechaDesde} />
           </div>
 

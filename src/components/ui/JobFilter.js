@@ -1,44 +1,94 @@
-import React from 'react';
+import React, { useState } from "react";
+import {
+    AdjustmentsVerticalIcon,
+    ArrowsUpDownIcon,
+} from "@heroicons/react/20/solid"; 
+
+const SelectFilter = ({ options, value, onChange }) => {
+    return (
+        <select
+            className="p-3 border border-gray-300 rounded-md text-gray-700"
+            value={value}
+            onChange={onChange}
+        >
+            {options.map((option) => (
+                <option key={option}>{option}</option>
+            ))}
+        </select>
+    );
+};
 
 const JobFilters = () => {
+ 
+    const [sortBy, setSortBy] = useState("");
+    const [specialty, setSpecialty] = useState("");
+    const [jobType, setJobType] = useState("");
+    const [officials, setOfficials] = useState("");
+
+ 
+    const applyFilters = () => {
+            console.log({ sortBy, specialty, jobType, officials });
+    };
+
     return (
-        <div className="bg-gray-500 px-4 py-3">
+        <div className="bg-gray-500 px-4 py-4 shadow-sm">
             <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-                <div className="flex flex-wrap justify-start space-x-4 items-center">
-                
-                    {/* Dropdown Filters */}
-                    <select className="p-2 border rounded-md mr-2 bg-white">
-                        <option>Ordenar por</option>
-                        <option>Mas Reciente</option>
-                        <option>Postulaciones</option>
-                        <option></option>
-                        {/* Add other options as needed */}
-                    </select>
+                <div className="flex flex-wrap justify-center space-x-6 items-center">
+                    {/* Icon buttons for small screens */}
+                    <button className="sm:hidden inline-flex items-center px-3 py-2 border border-gray-300 text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                        <ArrowsUpDownIcon className="h-5 w-5" />
+                        <span>Ordenar</span>
+                    </button>
 
-                    <select className="p-2 border rounded-md mr-2 bg-white">
-                        <option>Especialidad</option>
-                        <option>Ingenieria en Sistemas</option>
-                        <option>Ingenieria Eletronica</option>
-                        <option>Ingenieria Quimica</option>
-                        <option>Ingenieria Otra</option>
-                        {/* Add other options as needed */}
-                    </select>
+                    <button className="sm:hidden inline-flex items-center px-5 py-3 text-sm leading-4 font-medium rounded-md text-white focus:outline-none ">
+                        <AdjustmentsVerticalIcon className="h-5 w-5" />
+                        <span>Filtrar</span>
+                    </button>
 
-                    <select className="p-2 border  rounded-md mr-2 bg-white">
-                        <option>Tipo Trabajo</option>
-                        <option>Bolsa de trabajo</option>
-                        <option>Pasantia</option>
-                        {/* Add other options as needed */}
-                    </select>
+                    {/* Full dropdowns for larger screens */}
+                    <div className="hidden sm:flex space-x-4">
+                        {/* Dropdown Filters */}
+                        <SelectFilter
+                            options={["Ordenar por", "Mas Reciente", "Postulaciones"]}
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                        />
 
-                    <select className="p-2 border   rounded-md bg-white">
-                        <option>Oficiales</option>
-                        {/* Add other options as needed */}
-                    </select>
+                        <SelectFilter
+                            options={[
+                                "Especialidad",
+                                "Ingenieria en Sistemas",
+                                "Ingenieria Eletronica",
+                                "Ingenieria Quimica",
+                                "Ingenieria Otra",
+                            ]}
+                            value={specialty}
+                            onChange={(e) => setSpecialty(e.target.value)}
+                        />
+
+                        <SelectFilter
+                            options={["Tipo Trabajo", "Bolsa de trabajo", "Pasantia"]}
+                            value={jobType}
+                            onChange={(e) => setJobType(e.target.value)}
+                        />
+
+                        <SelectFilter
+                            options={["Oficiales"]}
+                            value={officials}
+                            onChange={(e) => setOfficials(e.target.value)}
+                        />
+
+                        <button
+                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                            onClick={applyFilters}
+                        >
+                            Aplicar Filtros
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default JobFilters;

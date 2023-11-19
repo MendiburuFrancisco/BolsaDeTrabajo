@@ -3,6 +3,7 @@
 import Navbar from "./../components/ui/Navbar.js"; 
 import { Link } from 'react-router-dom'
 import Footer from "../components/ui/Footer.js";
+import { HomeIcon, BookmarkIcon, UserIcon } from "@heroicons/react/20/solid";
 
 
  

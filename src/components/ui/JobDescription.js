@@ -4,7 +4,7 @@ import PrimaryLink from "./PrimaryLink.js";
 
 import { useState } from "react";
 import FormInput from "../form/FormInput"
-import { BriefcaseIcon, CheckBadgeIcon, BuildingLibraryIcon, CalendarDaysIcon, BookmarkIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
+import { HomeIcon,UserIcon,BriefcaseIcon, CheckBadgeIcon, BuildingLibraryIcon, CalendarDaysIcon, BookmarkIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
 import { updateJobRequest } from "../../api/jobs.request";
 
 
@@ -72,8 +72,8 @@ const JobDescription = ({
 
   const updateJobRequest = async (job) => {
     const authData = JSON.stringify(job);
-    const response = await updateJobRequest(authData, user.id);
-    return response;        
+    // const response = await updateJobRequest(authData, user.id);
+    // return response;        
   }
 
   // const applicationRequest = async (user) => {

@@ -4,6 +4,10 @@ import { FormControl, InputLabel, Input, Button } from '@material-ui/core';
 import Footer from '../components/ui/Footer'
 import LogoNegro from './../assets/img/logo-utn-n.png'
 import { Form, Link } from 'react-router-dom';
+import FormInput from '../components/form/FormInput';
+
+
+
 export const SignUpCompany = () => {
 
  const [formData, setFormData] = useState({ inputField: '' });
@@ -72,7 +76,8 @@ export const SignUpCompany = () => {
             <button className="w-40 mt-5 bg-blue-500 text-white py-2 rounded hover:bg-gray-700 transition duration-300 mb-2">
             Registrarme
             </button>
-        </form>      
+            <FormInput  type="submit" value="Registrarme" />
+        </form>  
         <Link to={"/login"}> 
         <p className=' text-gray-400 '>¿Tenes cuenta?</p>
         </Link>

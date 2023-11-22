@@ -1,3 +1,4 @@
+ 
 import React, { useState } from "react";
 import {useForm} from '../../hooks/useForm';
 import FormInput from '../form/FormInput';
@@ -97,6 +98,7 @@ function RegistrationComponent() {
     <div className="flex flex-col md:flex-row p-4  bg-white rounded-md shadow-md">
       {/* Left section */}
       <section className="flex-1 p-4 space-y-4 pt-24 ">
+ 
         <div className="text-lg font-bold">¿Cómo obtengo una cuenta?</div>
         <p className="text-gray-600">
           {" "}
@@ -133,6 +135,7 @@ function RegistrationComponent() {
         <div className="text-lg font-bold text-center">Registro
         <p className="text-sm text-center text-gray-600">Para empresas</p>
         </div>
+ 
         <form onSubmit={handleSubmit}>
           <div className="space-y-2">
             <InputLabel
@@ -241,6 +244,7 @@ function RegistrationComponent() {
             Registrarme
             </button> 
 </form>
+ 
         <div className="text-center mt-2">
           <PrimaryLink
             id="login"
@@ -252,5 +256,6 @@ function RegistrationComponent() {
     </div>
   );
 };
-
+ 
 export default RegistrationComponent;
+ 

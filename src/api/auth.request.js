@@ -1,5 +1,6 @@
 import axios from "./axios";
 // import { fetchData } from "./fetchData";
+
 import Swal from "sweetalert2";
 
  
@@ -19,6 +20,7 @@ export const registerRequest = async (user) => {
     });
 }
 
+
 // export const registerCompanyRequest = async (company) => {
 //   axios.post("http://localhost:8888/auth/company/register",{
 //     method:"POST",
@@ -33,6 +35,7 @@ export const registerRequest = async (user) => {
 //         return err;
 //       });
 // }
+
 export const loginRequest = async (user) => {
   const authData = JSON.stringify(user);
   const response = await axios.post("/auth/login",  authData,

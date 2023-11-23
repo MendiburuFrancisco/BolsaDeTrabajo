@@ -45,7 +45,12 @@ function AdminEmpresa() {
   }
 
    const update = () => {
-      Axios.put("http://localhost:8888/company", {
+    if (!id) {
+      console.error("ID del usuario no disponible");
+      return;
+    }
+  
+    Axios.put(`http://localhost:8888/company/${id}`, {
         id: id,
         cuit: cuit,
         razon_social: razon_social,
@@ -54,12 +59,11 @@ function AdminEmpresa() {
         telefono: telefono,
         password: password,
       }).then(() => {
-        console.log("Se está ejecutando")
         getEmpresas();
         limpiarCampos();
         Swal.fire({
           title: "<strong>Actualización exitosa!!!</strong>",
-          html: "<i>El empleado <strong>" + razon_social + "</strong> fue actualizado con éxito!!!</i>",
+          html: "<i>La empresa <strong>" + razon_social + "</strong> fue actualizada con éxito!!!</i>",
           icon: 'success',
            timer: 3000
          });

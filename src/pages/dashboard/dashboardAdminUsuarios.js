@@ -41,15 +41,20 @@ function AdminUsuarios() {
     console.log(nombre, apellido,email,password)
   }
 
-  const update = (val) => {
-    Axios.put(`http://localhost:8888/users/${val.id}`,{
+  const update = () => {
+    if (!id) {
+      console.error("ID del usuario no disponible");
+      return;
+    }
+  
+    Axios.put(`http://localhost:8888/users/${id}`,{
       id:id,
       nombre:nombre,
       apellido:apellido,
       email:email,
       password:password,
       legajo:legajo
-    }).then(()=>{
+    }).then(() => {
       getUsuarios();
       limpiarCampos();
       Swal.fire({
@@ -57,14 +62,14 @@ function AdminUsuarios() {
         html: "<i>El usuario <strong>"+nombre+" " +apellido+"</strong> fue actualizado con éxito!!!</i>",
         icon: 'success',
         timer:3000
-      }).catch(function(error){
+      });
+    }).catch(function (error) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: JSON.parse(JSON.stringify(error)).message==="Network Error"?"Intente más tarde":JSON.parse(JSON.stringify(error)).message
-        })
+          text: JSON.parse(JSON.stringify(error)).message === "Network Error" ? "Intente más tarde" : JSON.parse(JSON.stringify(error)).message
+        });
       });
-    });
   }
 
   const deleteUsuario = (val) => {
@@ -111,6 +116,7 @@ function AdminUsuarios() {
   }
 
   const editarUsuario = (val) => {
+    console.log(val.id)
     setEditar(true);
     setNombre(val.nombre);
     setApellido(val.apellido);

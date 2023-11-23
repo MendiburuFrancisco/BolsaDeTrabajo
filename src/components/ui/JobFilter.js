@@ -1,7 +1,12 @@
+import { getJobFilterRequest } from "../../api/jobs.request";
+import { useJobContext } from "../../context/JobContext"
+
+
 import React, { useState } from "react";
 import {
     AdjustmentsVerticalIcon,
     ArrowsUpDownIcon,
+    TrashIcon,
 } from "@heroicons/react/20/solid"; 
 
 const SelectFilter = ({ options, value, onChange }) => {
@@ -19,16 +24,38 @@ const SelectFilter = ({ options, value, onChange }) => {
 };
 
 const JobFilters = () => {
- 
+    
     const [sortBy, setSortBy] = useState("");
     const [specialty, setSpecialty] = useState("");
     const [jobType, setJobType] = useState("");
     const [officials, setOfficials] = useState("");
+    
+    const   { filters,setFilters,setSearchTerm } = useJobContext();
 
- 
+    const deleteFilters = () => {
+        setSortBy("");
+        setSpecialty("");
+        setJobType("");
+        setOfficials("");
+        setFilters({page: 1 });
+    };
+
     const applyFilters = () => {
             console.log({ sortBy, specialty, jobType, officials });
+            const id_tipo_trabajo = (jobType === "Bolsa de trabajo") ? 1 : 3;
+            const chequeado = (officials === "Oficiales") ? 1 : 0
+            if (chequeado === 1) {
+                setFilters({id_tipo_trabajo, chequeado, page: 1 });
+            }
+            else{
+                setFilters({id_tipo_trabajo, page: 1 });
+            }
+
     };
+
+ 
+ 
+
 
     return (
         <div className="bg-gray-500 px-4 py-4 shadow-sm">
@@ -73,7 +100,7 @@ const JobFilters = () => {
                         />
 
                         <SelectFilter
-                            options={["Oficiales"]}
+                            options={["Oficiales","Todos"]}
                             value={officials}
                             onChange={(e) => setOfficials(e.target.value)}
                         />
@@ -84,6 +111,16 @@ const JobFilters = () => {
                         >
                             Aplicar Filtros
                         </button>
+
+           
+                        <button
+                            className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                            onClick={deleteFilters}
+                        >
+                            <TrashIcon className="h-5 w-5" />
+
+                        </button>
+
                     </div>
                 </div>
             </div>

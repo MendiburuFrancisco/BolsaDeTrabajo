@@ -2,6 +2,10 @@ import axios from "./axios";
  
 
 export const getJobsRequest = async () => axios.get("/jobs");
+
+export const getJobFilterRequest = async (params) =>  axios.get("/jobs",{
+        params:params});
+ 
 export const createJobRequest = async (job) => axios.post("/jobs", job);
 
 export const updateJobRequest = async (job) => axios.put(`/jobs/${job.id}`, job);

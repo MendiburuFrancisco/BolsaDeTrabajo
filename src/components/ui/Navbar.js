@@ -2,9 +2,11 @@ import React from "react";
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { useJobContext } from "../../context/JobContext"
 
-import Filter from "./JobFilter.js";
+// import Filter from "./JobFilter.js";
 
 //Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
@@ -14,6 +16,8 @@ class NavBarButton extends React.Component {
     this.icon = icon;
     this.text = text;
   }
+  
+
 
   render() {
     return (
@@ -31,6 +35,21 @@ class NavBarButton extends React.Component {
 }
 
 const Navbar = ({ buttons, esconde }) => {
+  const [search, setSearch] = useState("");
+  const   { searchTerm,setSearchTerm } = useJobContext();
+
+
+  const applyFilters = () => {
+    setSearchTerm(search);
+  }
+
+  const handleInputChange = (event) => {
+    if (event.target.value === "") {
+      setSearchTerm("");
+    }
+    setSearch(event.target.value);
+  }
+
   return (
     <>
       <nav className=" navbar w-full top-0 left-0 flex items-center justify-between p-2 bg-gray-700 fixed">
@@ -45,16 +64,21 @@ const Navbar = ({ buttons, esconde }) => {
         </a>
 
         {/* Search */}
-        <div className={`rounded-full p-2 bg-white flex items-center ${esconde}`}>
+
+        <div className={`rounded-full p-2 bg-white flex items-center ${esconde}`} >
           <input
             type="text"
             placeholder="Buscar trabajos"
             className="rounded-l-full py-1 px-4 focus:outline-none lg:w-72 sm:w-40"
             aria-label="Buscar trabajos"
             role="search"
+            value={search}
+            onChange={handleInputChange}
           />
 
-          <button className="rounded-r-full text-gray-700 px-4" title="Buscar">
+          <button className="rounded-r-full text-gray-700 px-4" 
+          onClick={applyFilters}
+          title="Buscar">
             <MagnifyingGlassIcon className="w-6 h-6" />
           </button>
         </div>
@@ -79,6 +103,7 @@ const Navbar = ({ buttons, esconde }) => {
         </div>
       </nav>
       <div className="flex items-center justify-center h-20" />
+
     </>
   );
 };

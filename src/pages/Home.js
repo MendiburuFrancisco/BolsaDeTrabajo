@@ -26,7 +26,7 @@ function Home() {
       .then((res) => {
         // setTrabajos(res.data);
         setJobs(res.data);
-        setSelectedJob(res.data[0]);
+        setSelectedJob(jobs[0])
         // localStorage.setItem('trabajos', JSON.stringify(res.data));
       })
       .catch((err) => {

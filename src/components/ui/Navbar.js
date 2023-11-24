@@ -73,6 +73,7 @@ const Navbar = ({ buttons, esconde }) => {
             aria-label="Buscar trabajos"
             role="search"
             value={search}
+
             onChange={handleInputChange}
           />
 

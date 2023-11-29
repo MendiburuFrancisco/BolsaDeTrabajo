@@ -15,6 +15,9 @@ const Login = () => {
     usuario: "",
     password: "",
   });
+
+
+
   // const { signin } = useAuth();
 
   const { signin, loading, isAuthenticated,user,errors } = useAuth();
@@ -43,7 +46,7 @@ const Login = () => {
         }else{
           button.innerText = "Ingresar";
           mensajeError.classList.remove("hidden");
-
+    
         }
  
       
@@ -82,6 +85,7 @@ const Login = () => {
                 type="text"
                 id="usuario"
                 name="usuario"
+                value={values.usuario}
                 onChange={(e) => handleInputChange({target: e.target})}
                 required
                 ariaLabel="Ingrese su usuario"
@@ -118,6 +122,7 @@ const Login = () => {
                 name="password" 
                 onChange={(e) => handleInputChange({target: e.target})} 
                 required
+                value={values.password}
                 ariaLabel="Ingrese su contraseña"
               />
             </div>

@@ -73,6 +73,7 @@ function Home() {
           <div className="lg:col-span-8 md:col-span-7 h-[calc(85vh-0px)] sm:col-span-10">
             {selectedJob && (
               <JobDescription
+                id = {selectedJob.id}
                 title={selectedJob.titulo}
                 subtitle={selectedJob.tipo}
                 subSubtitle="ISI,EC"

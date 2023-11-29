@@ -46,35 +46,39 @@ export const AuthProvider = ({ children }) => {
 
   const signin = async (user) => {
     setLoading(true);
-    await loginRequest(user)
-      .then( async (res) => {
-          if(res.status === 200){
-            setIsAuthenticated(true);
-            setUser({
-                id: "0",
-                token: res.data.payload.token,
-            });
-            Cookies.set("token", res.data.payload.token);
-        }else{
-            setIsAuthenticated(false);
-            setErrors(res.data.error);
-        }
-
-        return res;
-            
-            
-      })
-      .catch((err) => {
-        console.log("Errro"+err);
-        setErrors(err);
-        return err;
-      })
-      .finally(() => setLoading(false));
+    try {
+      const res = await loginRequest(user);
+      setErrors([]);
+ 
+      if (res.status === 200) {
+        setIsAuthenticated(true);
+        setUser({
+          id: "0",
+          token: res.data.payload.token,
+        });
+        Cookies.set("token", res.data.payload.token);
+      } else {
+        setIsAuthenticated(false);
+        
+        setErrors(res.error);
+      }
+      return res;
+    } catch (err) {
+      console.log("Error" + err);
+      setErrors(err);
+      return err;
+    } finally {
+      setLoading(false);
+    }
   };
   const logout = () => {
     Cookies.remove("token");
     setUser(null);
     setIsAuthenticated(false);
+  };
+
+  const getToken = () => {
+    return Cookies.get("token");
   };
 
   useEffect(() => {
@@ -104,6 +108,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        getToken,
         user,
         signup,
         signin,

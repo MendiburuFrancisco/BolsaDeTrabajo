@@ -8,12 +8,13 @@ export const JobProvider = ({ children }) => {
     const [jobs, setJobs] = useState([]);
     const [filters, setFilters] = useState({});
     const [searchTerm, setSearchTerm] = useState('');
-
+    
     const [sortBy, setSortBy] = useState("");
     const [specialty, setSpecialty] = useState("");
     const [jobType, setJobType] = useState("");
     const [officials, setOfficials] = useState("");
-
+    
+    const [applicatedJobs, setApplicatedJobs] = useState([]);
 
     const fetchJobs = useCallback(() => {
         // Lógica para obtener trabajos basados en filtros y búsqueda

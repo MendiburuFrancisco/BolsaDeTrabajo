@@ -5,10 +5,13 @@ import PrimaryLink from "./PrimaryLink.js";
 import { useState } from "react";
 import FormInput from "../form/FormInput"
 import { HomeIcon,UserIcon,BriefcaseIcon, CheckBadgeIcon, BuildingLibraryIcon, CalendarDaysIcon, BookmarkIcon, PencilSquareIcon } from '@heroicons/react/20/solid'
-import { updateJobRequest } from "../../api/jobs.request";
+import { createApplicationRequest } from "../../api/applications.request.js";
 
+import { useAuth } from "../../context/AuthContext.js";
+import { useJobContext } from "../../context/JobContext.js";
 
 const JobDescription = ({
+  id,
   title,
   subtitle,
   subSubtitle,
@@ -17,6 +20,7 @@ const JobDescription = ({
   subidoPor,
   fechaDesde,
   fechaHasta,
+  esconderBoton=false,
   
 }) => {
 
@@ -70,30 +74,29 @@ const JobDescription = ({
     
   }
 
-  const updateJobRequest = async (job) => {
-    const authData = JSON.stringify(job);
-    // const response = await updateJobRequest(authData, user.id);
-    // return response;        
+  
+  const { getToken } = useAuth();
+  const { selectedJob } = useJobContext();
+
+  const applyToJob = () => {
+ 
+      const user_token = getToken();
+        const new_application = { "id_usuario":-1,"id_trabajo": id}
+      const res = createApplicationRequest(new_application, user_token);
+      console.log(res);
+      const message = (res.status === 200)? "Application created" : res.error;
+      console.log(message);      
+  
   }
 
-  // const applicationRequest = async (user) => {
-  //   const authData = JSON.stringify(user);
-  //   const response = await axios.post("/auth/login",  authData,
-  //     {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   return response;
-  // }
-  
-
   return (
-    <section aria-labelledby="job-title" className="bg-white p-6 rounded-lg shadow-md mb-4">
+      
+
+    <section aria-labelledby="job-title" className="bg-white p-6 rounded-lg shadow-md mb-4  hidden md:block">
       <header className="flex justify-between items-center mb-4">
         <HeaderElement />
         <div>
-        <BookmarkIcon className="h-7 w-7" aria-hidden="true" /> 
+        {/* <BookmarkIcon className="h-7 w-7" aria-hidden="true" />  */}
         <button onClick={() => setEditableMode(!editableMode)}>
         <PencilSquareIcon className="h-7 w-7" aria-hidden="true" />
         </button>
@@ -131,7 +134,6 @@ const JobDescription = ({
 
             <DateElement date={fechaDesde} />
           </div>
-
           <div className="flex items-center ps-3">
               <DateElement date={fechaHasta} />
           </div>
@@ -140,8 +142,9 @@ const JobDescription = ({
         <DescriptionElement/>
     
         <div className="mt-4">
-          <PrimaryButton text={"Postularme"} />
-          <div className="px-4 py-2 rounded">
+          {esconderBoton? null: <PrimaryButton text={"Postularme"} onClick={applyToJob}/>}
+          {/* // <PrimaryButton text={"Postularme"} onClick={applyToJob}/> */}
+          <div className="px-4 py-2 rounded md:hidden md:block">
             <PrimaryLink to="" text={"Volver atras"} />
           </div>
         </div>

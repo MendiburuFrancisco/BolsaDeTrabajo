@@ -35,9 +35,11 @@ class NavBarButton extends React.Component {
 }
 
 const Navbar = ({ buttons, esconde }) => {
-  const [search, setSearch] = useState("");
-  const   { searchTerm,setSearchTerm } = useJobContext();
 
+
+    const [search, setSearch] = useState("");
+    const   { searchTerm,setSearchTerm } = useJobContext();
+    
 
   const applyFilters = () => {
     setSearchTerm(search);
@@ -89,7 +91,7 @@ const Navbar = ({ buttons, esconde }) => {
           {buttons.map((button, index) => (
             <button
               key={index}
-              className="desktopbutton text-white px-4 py-2 rounded"
+              className="desktopbutton text-white px-4 py-2 rounded  hover:text-blue-200  transition duration-300"
             >
               {button}
             </button>

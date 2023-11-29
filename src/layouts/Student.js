@@ -14,9 +14,9 @@ function Student(children) {
     {/* <div className="App bg-gray-800 h-100 grid grid-row-1 gap-1"> */}
     {/* <div className="App bg-gray-800 h-100 grid grid-cols-1 gap-0 "> */}
 
-      <header className="header">
+      {/* <header className="header">
         {/*le pasamos como parametros los 3 iconos de la parte derecha*/}
-        <Navbar
+       {/*} <Navbar
           buttons={[
             //home
             <HomeIcon className="w-6"/>,
@@ -29,7 +29,7 @@ function Student(children) {
             </Link>,
           ]}
         />
-      </header>
+      </header> */}
       <main>{children.children}</main>
 
       {/* <Footer /> */}

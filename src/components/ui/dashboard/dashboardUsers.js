@@ -4,7 +4,7 @@ import Axios from "axios";
 
 import Swal from 'sweetalert2';
 
-function AdminUsuarios() {
+function AdminUsers() {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [legajo, setLegajo] = useState("");
@@ -280,4 +280,4 @@ function AdminUsuarios() {
     </div>
   );
 }
-export default AdminUsuarios;
+export default AdminUsers;

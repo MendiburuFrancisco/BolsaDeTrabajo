@@ -72,8 +72,8 @@ const JobDescription = ({
 
   const updateJobRequest = async (job) => {
     const authData = JSON.stringify(job);
-    const response = await updateJobRequest(authData, user.id);
-    return response;        
+    // const response = await updateJobRequest(authData, user.id);
+    //return response;        
   }
 
   // const applicationRequest = async (user) => {

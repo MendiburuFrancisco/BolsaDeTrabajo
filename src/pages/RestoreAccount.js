@@ -29,7 +29,7 @@ const GetBackAccount = () => {
             // value={this.state.email}
             // onChange={(event) =>  setEmail(event.target.value)}
           />
-          <p className="text-md font-semibold  font-medium   text-black-500 ms-2">
+          <p className="text-md  font-medium   text-black-500 ms-2">
             @frro.utn.edu.ar
           </p>
         </div>

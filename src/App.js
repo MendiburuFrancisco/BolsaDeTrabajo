@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AdminUsers from "./pages/dashboard/adminUsers";
 import AdminCompany from "./pages/dashboard/adminCompany";
 import AdminHome from "./pages/dashboard/adminHome";
-
+import AdminJobs from "./components/ui/dashboard/dashboardJobs";
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
             <Route path="/admin/company/" element={<AdminCompany />} />
             <Route path="/admin/users/" element={<AdminUsers />} />
             <Route path="/admin/" element={<AdminHome />} />
+            <Route path="/admin/jobs" element={<AdminJobs />} />
 
 
 

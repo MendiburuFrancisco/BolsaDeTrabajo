@@ -3,6 +3,7 @@
 import Navbar from "./../components/ui/Navbar.js"; 
 import { Link } from 'react-router-dom'
 import Footer from "../components/ui/Footer.js";
+import { HomeIcon, BriefcaseIcon, UserIcon } from "@heroicons/react/20/solid";
 
 
  
@@ -19,10 +20,17 @@ function Student(children) {
        {/*} <Navbar
           buttons={[
             //home
-            <HomeIcon className="w-6"/>,
-            
+            <Link to={"/"}>
+              <HomeIcon className="w-6 "/>
+            </Link>,
+
+
+
             //bookmark
-            <BookmarkIcon className="w-6 "  />,
+            <Link to={"/applications"}>
+              <BriefcaseIcon className="w-6 "  />
+            </Link>,
+            
             //usuario
             <Link to={"/settings"}>
               <UserIcon className="w-6" />

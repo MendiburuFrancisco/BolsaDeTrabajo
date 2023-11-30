@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../components/ui/PrimaryButton.js";
 import PrimaryLink from "../components/ui/PrimaryLink.js";
 import "./../assets/css/Login.css";
-// Logic-Imports
-//import React, { Suspense, useContext } from "react";
-//import { redirect } from "react-router-dom";
+
 import { useForm } from "../hooks/useForm.js"; 
 import { useAuth,AuthProvider } from "../context/AuthContext.js";
 
@@ -17,6 +15,9 @@ const Login = () => {
     usuario: "",
     password: "",
   });
+
+
+
   // const { signin } = useAuth();
 
   const { signin, loading, isAuthenticated,user,errors } = useAuth();
@@ -45,7 +46,7 @@ const Login = () => {
         }else{
           button.innerText = "Ingresar";
           mensajeError.classList.remove("hidden");
-
+    
         }
  
       
@@ -84,6 +85,7 @@ const Login = () => {
                 type="text"
                 id="usuario"
                 name="usuario"
+                value={values.usuario}
                 onChange={(e) => handleInputChange({target: e.target})}
                 required
                 ariaLabel="Ingrese su usuario"
@@ -120,6 +122,7 @@ const Login = () => {
                 name="password" 
                 onChange={(e) => handleInputChange({target: e.target})} 
                 required
+                value={values.password}
                 ariaLabel="Ingrese su contraseña"
               />
             </div>

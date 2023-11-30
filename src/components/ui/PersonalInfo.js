@@ -56,7 +56,7 @@ function PersonalInfo() {
   };
 
   return (
-    <div className="mb-4 w-1/3">
+    <div className="mb-4">
       <label className="block font-semibold mb-1">Nombre:</label>
       <input
         type="text"
@@ -75,67 +75,8 @@ function PersonalInfo() {
         placeholder="Apellido"
       />
 
-      <div className="flex mb-2">
-        <div className="w-1/2 mr-2">
-          <label className="block font-semibold mb-1">Tipo de Documento:</label>
-          <select
-            value={tipoDocumento}
-            onChange={handleTipoDocumentoChange}
-            className="w-full border border-gray-300 rounded p-2"
-          >
-            <option value="dni">DNI</option>
-            <option value="pasaporte">Pasaporte</option>
-          </select>
-        </div>
-        <div className="w-1/2 ml-2">
-          <label className="block font-semibold mb-1">Número de Documento:</label>
-          <input
-            type="number"
-            value={numeroDocumento}
-            onChange={handleNumeroDocumentoChange}
-            className="w-full border border-gray-300 rounded p-2"
-            placeholder="Número de Documento"
-          />
-        </div>
-      </div>
-
-      <div className="w-1/3 ">
-          <label className="block font-semibold mb-1">Fecha de Nacimiento:</label>
-          <input
-            type="date"
-            value={fechaNacimiento}
-            onChange={handleFechaNacimientoChange}
-            className="w-full border border-gray-300 rounded p-2"
-          />
-      </div>
-
-      <div className=" mb-2">
-        <div className="w-1/3 mr-2">
-          <label className="block font-semibold mb-1">Estado civil:</label>
-          <select
-            value={estadoCivil}
-            onChange={handleEstadoCivilChange}
-            className="w-full border border-gray-300 rounded p-2"
-          >
-            <option value="dni">Soltero</option>
-            <option value="pasaporte">Casado</option>
-          </select>
-        </div>
-      </div>
-
-      <div className=" mb-2">
-        <div className="w-1/3 mr-2">
-          <label className="block font-semibold mb-1">Sexo:</label>
-          <select
-            value={sexo}
-            onChange={handleSexoChange}
-            className="w-full border border-gray-300 rounded p-2"
-          >
-            <option value="dni">Masculino </option>
-            <option value="pasaporte">Femenino</option>
-          </select>
-        </div>
-      </div>
+   
+  
 
 
       
@@ -156,25 +97,7 @@ function PersonalInfo() {
         className="w-full border border-gray-300 rounded p-2"
         placeholder="Ciudad"
       />
-    
-      <label className="block font-semibold mb-1">Calle:</label>
-      <input
-        type="text"
-        value={calle}
-        onChange={handleCalleChange}
-        className="w-full border border-gray-300 rounded p-2"
-        placeholder="Calle"
-      />
-
-      <label className="block font-semibold mb-1">Nro Calle:</label>
-      <input
-        type="text"
-        value={nroCalle}
-        onChange={handleNroCalleChange}
-        className="w-full border border-gray-300 rounded p-2"
-        placeholder="Nro Calle"
-      />
-      
+ 
       
 
 

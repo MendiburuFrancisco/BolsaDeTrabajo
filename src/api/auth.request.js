@@ -1,8 +1,4 @@
 import axios from "./axios";
-// import { fetchData } from "./fetchData";
-
-import Swal from "sweetalert2";
-
  
 export const registerRequest = async (user) => {
   axios.post("/auth/register", {
@@ -21,30 +17,24 @@ export const registerRequest = async (user) => {
 }
 
 
-// export const registerCompanyRequest = async (company) => {
-//   axios.post("http://localhost:8888/auth/company/register",{
-//     method:"POST",
-//     body:JSON.stringify(company),
-//     headers:{
-//       'Content-Type':'application/json'}
-//       })
-//       .then((res) => {
-//         return res;
-//       })
-//       .catch((err) => {
-//         return err;
-//       });
-// }
-
-export const loginRequest = async (user) => {
-  const authData = JSON.stringify(user);
-  const response = await axios.post("/auth/login",  authData,
-    {
-    headers: {
+export const registerCompanyRequest = async (company) => {
+  const companyData = JSON.stringify(company);
+  console.log(companyData)
+  await axios.post("/auth/company/register", companyData,{
+    headers: { 
       "Content-Type": "application/json",
     },
-  });
-  return response;
+
+  })
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err;
+    });
 }
+
+
+export const loginRequest = async (user) => axios.post("/auth/login", user);
 
 export const verifyTokenRequest = async () => axios.get("/auth/verify");

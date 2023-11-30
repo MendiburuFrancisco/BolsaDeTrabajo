@@ -53,7 +53,7 @@ const Card = ({ id, title, type, specialitys, chequeado }) => {
             </span>
           ) : null}
 
-          <button
+          {/* <button
             className={
               id +
               "-save text-black-500 text-xl mr-2 hover:text-blue-500 transition duration-300  "
@@ -61,7 +61,7 @@ const Card = ({ id, title, type, specialitys, chequeado }) => {
             onClick={handleSaveButton}
           >
             {iconSave(false)}
-          </button>
+          </button> */}
         </div>
       </div>
       <p className="opacity-70 text-left  pl-4 mb-3">{specialitys}</p>

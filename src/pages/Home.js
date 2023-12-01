@@ -1,8 +1,5 @@
  
- 
-import { fetchData } from "../hooks/fetchData.js";
- 
-import { useJobContext } from '../context/JobContext';
+ import { useJobContext } from '../context/JobContext';
 
 import React, { useState, useEffect } from "react";
 import JobCard from "../components/ui/JobCard.js";
@@ -46,15 +43,16 @@ function Home() {
     <>
  
 
-      <StudentLayout className="flex items-center justify-center h-[calc(100vh-0px)]">
-        <JobFilters />
+      <StudentLayout className="flex items-center justify-center   ">
+        <JobFilters /> 
+        <p className='text-gray-300 text-left mx-5 pt-4'> Se encontraron {jobs.length} trabajos</p>
+        <div role="main" className="grid lg:grid-cols-12 md:grid-cols-12 lg:gap-12 md:gap-12 m-5">
+          <div className="lg:col-span-4 md:col-span-5 sm:col-span-10  ">
 
-        <div role="main" className="grid lg:grid-cols-12 md:grid-cols-12 lg:gap-12 md:gap-12 m-4">
-          <div className="lg:col-span-4 md:col-span-5 sm:col-span-10">
           {jobs.map((trabajo, index) => (
               <a
                 key={index}
-                tabIndex="0"
+                tabIndex="0" 
                 role="button"
                 aria-label={`Select job: ${trabajo.titulo}`}
                 onClick={() => handlerSelectedJob(trabajo, true)}
@@ -70,7 +68,7 @@ function Home() {
               </a>
             ))}
           </div>
-          <div className="lg:col-span-8 md:col-span-7 h-[calc(85vh-0px)] sm:col-span-10">
+          <div className="lg:col-span-8 md:col-span-7 sm:col-span-10   ">
             {selectedJob && (
               <JobDescription
                 id = {selectedJob.id}

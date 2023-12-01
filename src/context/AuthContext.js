@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
+  // signup
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
@@ -44,29 +45,34 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // login
+const singInMessage = (status,message) => {
+    return {status: status, message: message};
+}
+    
+
   const signin = async (user) => {
     setLoading(true);
     try {
       const res = await loginRequest(user);
       setErrors([]);
- 
+
       if (res.status === 200) {
         setIsAuthenticated(true);
-        setUser({
-          id: "0",
-          token: res.data.payload.token,
-        });
+        setUser({id: "0", token: res.data.payload.token});
         Cookies.set("token", res.data.payload.token);
+        
       } else {
         setIsAuthenticated(false);
-        
-        setErrors(res.error);
+        setErrors(res.data.error);
       }
-      return res;
+      return singInMessage(res.status,res.data);
     } catch (err) {
-      console.log("Error" + err);
-      setErrors(err);
-      return err;
+      console.log("!!!Error!!! ", err.response.data.error);
+      setErrors(err.response.data.error);
+      return singInMessage(400,errors);
+      // return err.response.data.error;
+
     } finally {
       setLoading(false);
     }

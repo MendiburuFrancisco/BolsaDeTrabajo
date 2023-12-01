@@ -16,19 +16,19 @@ const Card = ({ id, title, type, specialitys, chequeado }) => {
     // setSelectedJob({ title, subtitle, subSubtitle, text, button1Label, button2Label });
   };
 
-  function handleSaveButton() {
-    // modifica el icono de guardado
-    const saveIcon = document.getElementById(id + "-save");
-    if (saveIcon) {
-      if (saveIcon.innerHTML === iconSave(true)) {
-        saveIcon.innerHTML = iconSave(false);
-      }
-      else {
+  // function handleSaveButton() {
+  //   // modifica el icono de guardado
+  //   const saveIcon = document.getElementById(id + "-save");
+  //   if (saveIcon) {
+  //     if (saveIcon.innerHTML === iconSave(true)) {
+  //       saveIcon.innerHTML = iconSave(false);
+  //     }
+  //     else {
 
-        saveIcon.innerHTML = iconSave(true);
-      }
-    }
-  }
+  //       saveIcon.innerHTML = iconSave(true);
+  //     }
+  //   }
+  // }
 
   return (
     <div

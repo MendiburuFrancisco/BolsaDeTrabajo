@@ -80,7 +80,7 @@ function PersonalInfo() {
 
 
       
-      <label className="block font-semibold mb-1">Provincia:</label>
+      <label className="block font-semibold mb-1">Legajo:</label>
       <input
         type="text"
         value={provincia}
@@ -89,14 +89,6 @@ function PersonalInfo() {
         placeholder="Provincia"
       />
 
-      <label className="block font-semibold mb-1">Ciudad:</label>
-      <input
-        type="text"
-        value={ciudad}
-        onChange={handleCiudadChange}
-        className="w-full border border-gray-300 rounded p-2"
-        placeholder="Ciudad"
-      />
  
       
 

@@ -22,10 +22,12 @@ function Home() {
 
   const user_token = getToken();
 
+  // console.log("user_token",user_token)
+
   useEffect(() => {
     getApplicationByUserRequest(user_token)
       .then((res) => {
-        console.log("AAAAAAA",res.data)
+        // console.log("AAAAAAA",res.data)
 
          let _trabajos = res.data.map((arreglo) => {
           console.log(arreglo.trabajo)

@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import {registerRequest } from "../../../api/auth.request";
 
 import Swal from 'sweetalert2';
 
@@ -15,15 +16,29 @@ function AdminUsers() {
   const [usuariosList, setUsuariosList] = useState([]);  
 
   const add = () => {
-    Axios.post("http://localhost:8888/auth/user/register", {
-      nombre: nombre,
-      apellido: apellido,
-      legajo: legajo,
-      email: email,
-      password: password,    
-      id_role:'2',
-      verified:'1',
-    }).then(() => {
+
+    // Axios.post("http://localhost:8888/auth/user/register", {
+  
+  const new_user =  {
+    nombre: nombre,
+    apellido: apellido,
+    legajo: legajo,
+    email: email,
+    password: password,    
+    id_role:'2',
+    verified:'1',
+  }
+
+  registerRequest(new_user).then((res) => {
+      console.log(res)
+      if(res.status !== 200 ){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          html: "<i>"+res.data+"</i>",
+          timer: 3000,
+        });
+      }
       Swal.fire({
         title: "<strong>Registro exitoso!!!</strong>",
         html: "<i>El usuario <strong>" + nombre + " " + apellido + "</strong> fue registrado con éxito!!!</i>",

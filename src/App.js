@@ -5,12 +5,13 @@ import Login from "./pages/Login";
 import GetAccount from "./pages/SingIn";
 import GetBackAccount from "./pages/RestoreAccount";
 import Settings from "./pages/Settings";
+import UploadedJobs from "./pages/UploadedJobs";
 import Applications from "./pages/Applications";
 import { AuthProvider } from "./context/AuthContext";
 import { JobProvider } from "./context/JobContext";
  
 
-import AdminUsers from "./pages/dashboard/adminUsers";
+import AdminUser from "./pages/dashboard/adminUsers";
 import AdminCompany from "./pages/dashboard/adminCompany";
 import AdminJobs from "./components/ui/dashboard/dashboardJobs";
 import AdminHome from "./pages/dashboard/adminHome";
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/settings/" element={<Settings />} />
+            <Route path="/jobs" element={<UploadedJobs />} />
             <Route path="/applications" element={<Applications />} />
           {/* </Routes>
           </JobProvider>

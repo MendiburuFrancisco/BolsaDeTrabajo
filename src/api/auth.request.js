@@ -1,20 +1,10 @@
 import axios from "./axios";
  
-export const registerRequest = async (user) => {
-  axios.post("/auth/register", {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
+// export const registerRequest = async (user) => axios.post("/auth/register", { method: "POST", body: JSON.stringify(user), headers: { "Content-Type": "application/json",}});
+export const registerRequest = async (user) => axios.post("/auth/user/register",  user);
+
+
+export const createJobRequest = async (job) => axios.post("/jobs", job);
 
 
 export const registerCompanyRequest = async (company) => {

@@ -6,11 +6,17 @@ import Swal from 'sweetalert2';
 
 function AdminJobs() {
   const [titulo, setTitulo] = useState("");
+  const [id_usuario, setIdUsuario] = useState("");
+  const [id_empresa, setIdEmpresa] = useState("");
+  const [id_tipo_trabajo, setIdTipoTrabajo] = useState("");
   const [fecha_desde, setFechaDesde] = useState("");
   const [fecha_hasta, setFechaHasta] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [sueldo, setSueldo] = useState("");
   const [ubicacion, setUbicacion] = useState("");
+  const [link, setLink] = useState("");
+  const [empresa,setEmpresa] = useState("");
+  const [nivel_experiencia,setNivelExperiencia] = useState("");
   const [id, setId] = useState();
   const [editar, setEditar] = useState(false);
   const [trabajosList, setTrabajosList] = useState([]);
@@ -18,15 +24,18 @@ function AdminJobs() {
   const add = () => {
     Axios.post("http://localhost:8888/jobs", {
       titulo: titulo,
+      id_usuario: id_usuario,
+      id_empresa: id_empresa,
+      id_tipo_trabajo: id_tipo_trabajo,
       fecha_desde: fecha_desde,
       fecha_hasta: fecha_hasta,
       descripcion: descripcion,
       sueldo: sueldo,
       ubicacion: ubicacion,
+      link: link,
       verified: true,
-      id_usuario: 19,
-      id_empresa: 1,
-      id_tipo_trabajo: 1,
+      empresa:empresa,
+      nivel_experiencia:nivel_experiencia,
       
     }).then(() => {
        getTrabajos();
@@ -56,14 +65,17 @@ function AdminJobs() {
     Axios.put(`http://localhost:8888/jobs/${id}`, {
         id: id,
         titulo: titulo,
+        id_usuario: id_usuario,
+        id_empresa: id_empresa,
+        id_tipo_trabajo: id_tipo_trabajo,
         fecha_desde: fecha_desde,
         fecha_hasta: fecha_hasta,
         descripcion: descripcion,
         sueldo: sueldo,
         ubicacion: ubicacion,
-        id_usuario: 3,
-        id_empresa: 4,
-        id_tipo_trabajo: 3,
+        link: link,
+        empresa: empresa,
+        nivel_experiencia:nivel_experiencia,
 
       }).then(() => {
         getTrabajos();
@@ -117,12 +129,18 @@ function AdminJobs() {
 
   const limpiarCampos = () => {
     setTitulo("");
+    setIdUsuario("");
     setFechaDesde("");
     setFechaHasta("");
     setDescripcion("");
     setSueldo("");
     setUbicacion("");
     setId("");
+    setEmpresa("");
+    setIdEmpresa("");
+    setIdTipoTrabajo("");
+    setLink("");
+    setNivelExperiencia("")
     setEditar(false);
   }
 
@@ -135,6 +153,13 @@ function AdminJobs() {
       setSueldo(val.sueldo);
       setUbicacion(val.ubicacion);
       setId(val.id);
+      setIdUsuario(val.id_usuario);
+      setEmpresa(val.empresa);
+      setIdEmpresa(val.id_empresa);
+      setIdTipoTrabajo(val.id_tipo_trabajo);
+      setLink(val.link);
+      setNivelExperiencia(val.nivel_experiencia)
+
     }
 
     const getTrabajos = () => {
@@ -179,8 +204,8 @@ function AdminJobs() {
           onChange={(event) => {
             setFechaDesde(event.target.value);
           }}
-          placeholder="Ingrese la Razón Social"
-          aria-label="Razón Social"
+          placeholder="Ingrese la fecha"
+          aria-label="fecha desde"
           aria-describedby="basic-addon1"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
         />
@@ -193,8 +218,8 @@ function AdminJobs() {
           onChange={(event) => {
             setFechaHasta(event.target.value);
           }}
-          placeholder="Ingrese la Razón Social"
-          aria-label="Razón Social"
+          placeholder="Ingrese la fecha"
+          aria-label="fecha hasta"
           aria-describedby="basic-addon1"
           className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
         />
@@ -208,7 +233,7 @@ function AdminJobs() {
             setDescripcion(event.target.value);
           }}
           className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
-          placeholder="Ingrese un Descripcion"
+          placeholder="Ingrese una Descripcion"
           aria-label="Descripcion"
           aria-describedby="basic-addon1"
         />
@@ -244,6 +269,76 @@ function AdminJobs() {
           aria-describedby="basic-addon1"
         />
       </div>
+      <div className="input-group mb-3">
+      <label className="block text-sm font-medium text-gray-700">Link de la oferta:</label>
+        <input
+          type="text"
+          value={link}
+          onChange={(event) => {
+            setLink(event.target.value);
+          }}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+          placeholder="Ingrese ubicacion del puesto: "
+          aria-label="ubicacion"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div className="input-group mb-3">
+      <label className="block text-sm font-medium text-gray-700">Id Empresa:</label>
+        <input
+          type="text"
+          value={id_empresa}
+          onChange={(event) => {
+            setIdEmpresa(event.target.value);
+          }}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+          placeholder="Ingrese el id de la empresa"
+          aria-label="id empresa"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div className="input-group mb-3">
+      <label className="block text-sm font-medium text-gray-700">Id Usuario:</label>
+        <input
+          type="text"
+          value={id_usuario}
+          onChange={(event) => {
+            setIdUsuario(event.target.value);
+          }}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+          placeholder="Ingrese el id del usuario"
+          aria-label="id usuario"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div className="input-group mb-3">
+      <label className="block text-sm font-medium text-gray-700">Id Tipo Trabajo:</label>
+        <input
+          type="text"
+          value={id_tipo_trabajo}
+          onChange={(event) => {
+            setIdTipoTrabajo(event.target.value);
+          }}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+          placeholder="Ingrese el id del tipo de trabajo"
+          aria-label="id tipo trabajo"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <div className="input-group mb-3">
+      <label className="block text-sm font-medium text-gray-700">Nivel de experiencia:</label>
+        <input
+          type="text"
+          value={nivel_experiencia}
+          onChange={(event) => {
+            setNivelExperiencia(event.target.value);
+          }}
+          className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
+          placeholder="Ingrese el nivel de experiencia"
+          aria-label="Nivel experiencia"
+          aria-describedby="basic-addon1"
+        />
+      </div>
     </div>
     <div className="text-center mt-6">
       {editar ? (
@@ -266,6 +361,16 @@ function AdminJobs() {
       <th scope="col" className="border p-2 w-1/4">Descripcion</th>
       <th scope="col" className="border p-2 w-1/8">Sueldo</th>
       <th scope="col" className="border p-2 w-1/8">Ubicacion</th>
+      <th scope="col" className="border p-2 w-1/8">id Usuario</th>
+      <th scope="col" className="border p-2 w-1/8">id empr</th>
+      <th scope="col" className="border p-2 w-1/8">id ti</th>
+      <th scope="col" className="border p-2 w-1/8">link</th>
+      <th scope="col" className="border p-2 w-1/8">exp</th>
+
+
+
+
+
     </tr>
   </thead>
     <tbody>
@@ -278,6 +383,11 @@ function AdminJobs() {
             <td className="border p-2">{val.descripcion}</td>
             <td className="border p-2">{val.sueldo}</td>
             <td className="border p-2">{val.ubicacion}</td>
+            <td className="border p-2">{val.id_usuario}</td>
+            <td className="border p-2">{val.id_empresa}</td>
+            <td className="border p-2">{val.id_tipo_contrato}</td>
+            <td className="border p-2">{val.link}</td>
+            <td className="border p-2">{val.nivel_experiencia}</td>
             <td className="border p-2">     
     <button
           type="button"

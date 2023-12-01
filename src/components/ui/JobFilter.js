@@ -12,7 +12,7 @@ import {
 const SelectFilter = ({ options, value, onChange }) => {
     return (
         <select
-            className="p-3 border border-gray-300 rounded-md text-gray-700"
+            className="py-3 border border-gray-300 rounded-md text-gray-700"
             value={value}
             onChange={onChange}
         >
@@ -58,7 +58,7 @@ const JobFilters = () => {
 
 
     return (
-        <div className="bg-gray-500 px-4 py-4 shadow-sm">
+        <div className="bg-gray-500  py-2 shadow-sm">
             <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
                 <div className="flex flex-wrap justify-center space-x-6 items-center">
                     {/* Icon buttons for small screens */}

@@ -21,6 +21,7 @@ const JobDescription = ({
   fechaDesde,
   fechaHasta,
   esconderBoton=false,
+  esEditable=false
   
 }) => {
 
@@ -96,10 +97,15 @@ const JobDescription = ({
       <header className="flex justify-between items-center mb-4">
         <HeaderElement />
         <div>
-        {/* <BookmarkIcon className="h-7 w-7" aria-hidden="true" />  */}
+        {esEditable? 
         <button onClick={() => setEditableMode(!editableMode)}>
         <PencilSquareIcon className="h-7 w-7" aria-hidden="true" />
         </button>
+        
+        : 
+        null
+        
+        }
 
         </div>
       </header>

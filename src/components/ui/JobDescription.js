@@ -150,7 +150,7 @@ const JobDescription = ({
         <div className="mt-4">
           {esconderBoton? null: <PrimaryButton text={"Postularme"} onClick={applyToJob}/>}
           {/* // <PrimaryButton text={"Postularme"} onClick={applyToJob}/> */}
-          <div className="px-4 py-2 rounded md:hidden md:block">
+          <div className="px-4 py-2 rounded md-hidden md-block">
             <PrimaryLink to="" text={"Volver atras"} />
           </div>
         </div>

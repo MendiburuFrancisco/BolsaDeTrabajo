@@ -8,9 +8,13 @@ import Settings from "./pages/Settings";
 import Applications from "./pages/Applications";
 import { AuthProvider } from "./context/AuthContext";
 import { JobProvider } from "./context/JobContext";
+ 
+
 import AdminUsers from "./pages/dashboard/adminUsers";
 import AdminCompany from "./pages/dashboard/adminCompany";
+import AdminJobs from "./components/ui/dashboard/dashboardJobs";
 import AdminHome from "./pages/dashboard/adminHome";
+import AdminJobType from "./components/ui/dashboard/dashboardJobType";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -31,10 +35,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/singin" element={<GetAccount />} />
           <Route path="/login/password/reset" element={<GetBackAccount />} />
+
+          <Route path="/admin" element={<AdminHome/>} />
           <Route path="/admin/company/" element={<AdminCompany />} />
-          <Route path="/admin/users/" element={<AdminUsers />} />
-          <Route path="/admin/" element={<AdminHome />} />
-        
+          <Route path="/admin/users/" element={<AdminUser />} />
+          <Route path="/admin/jobs/" element={<AdminJobs />} />
+          <Route path="/admin/jobtype/" element={<AdminJobType />} />        
         </Routes>
           </JobProvider>
 

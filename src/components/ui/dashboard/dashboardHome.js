@@ -17,7 +17,7 @@ function dashboardHome() {
             <p class="leading-relaxed text-base text-white dark:text-gray-300">
               Ver usuarios registrados en la base de datos de nuestro sistema, modificar sus datos, dar de alta usuarios nuevos y eliminarlos si se desea.
             </p>
-            <a href="/admin/users" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver mas 
+            <a href="/admin/users" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver usuarios 
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -40,7 +40,7 @@ function dashboardHome() {
             <p class="leading-relaxed text-base text-white dark:text-gray-300">
             Ver empresas registradas en la base de datos de nuestro sistema, modificar sus datos, dar de alta empresas nuevas y eliminarlas si se desea.
             </p>
-            <a href="/admin/company" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver mas 
+            <a href="/admin/company" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver empresas 
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -63,7 +63,7 @@ function dashboardHome() {
             <p class="leading-relaxed text-base text-white dark:text-gray-300">
             Ver trabajos registrados en la base de datos de nuestro sistema, modificar sus datos de la oferta, dar de alta puestos de trabajos nuevos y eliminarlos si se desea.
             </p>
-            <a href="#" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver mas 
+            <a href="#" class="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center"> Ver trabajos 
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                     stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>

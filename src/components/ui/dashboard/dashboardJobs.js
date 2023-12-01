@@ -9,7 +9,6 @@ function AdminJobs() {
   const [fecha_desde, setFechaDesde] = useState("");
   const [fecha_hasta, setFechaHasta] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [direccion, setDireccion] = useState("");
   const [sueldo, setSueldo] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [id, setId] = useState();
@@ -22,7 +21,6 @@ function AdminJobs() {
       fecha_desde: fecha_desde,
       fecha_hasta: fecha_hasta,
       descripcion: descripcion,
-      direccion: direccion,
       sueldo: sueldo,
       ubicacion: ubicacion,
       verified: true,
@@ -46,7 +44,7 @@ function AdminJobs() {
         text: JSON.parse(JSON.stringify(error)).message === "Network Error" ? "Intente más tarde" : JSON.parse(JSON.stringify(error)).message
       });
     });
-    console.log(titulo,fecha_desde,direccion,descripcion,ubicacion,sueldo)
+    console.log(titulo,fecha_desde,descripcion,ubicacion,sueldo)
   }
 
    const update = () => {
@@ -60,13 +58,12 @@ function AdminJobs() {
         titulo: titulo,
         fecha_desde: fecha_desde,
         fecha_hasta: fecha_hasta,
-        direccion: direccion,
         descripcion: descripcion,
         sueldo: sueldo,
         ubicacion: ubicacion,
-        id_usuario: 19,
+        id_usuario: 3,
         id_empresa: 4,
-        id_tipo_trabajo: 1,
+        id_tipo_trabajo: 3,
 
       }).then(() => {
         getTrabajos();
@@ -123,7 +120,6 @@ function AdminJobs() {
     setFechaDesde("");
     setFechaHasta("");
     setDescripcion("");
-    setDireccion("");
     setSueldo("");
     setUbicacion("");
     setId("");
@@ -136,7 +132,6 @@ function AdminJobs() {
       setFechaDesde(val.fecha_desde);
       setFechaHasta(val.fecha_hasta);
       setDescripcion(val.descripcion);
-      setDireccion(val.direccion);
       setSueldo(val.sueldo);
       setUbicacion(val.ubicacion);
       setId(val.id);

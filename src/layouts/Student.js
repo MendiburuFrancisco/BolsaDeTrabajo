@@ -12,12 +12,12 @@ function Student(children) {
 
     <div className="   bg-gray-800   ">
  
-    {/* <div className="App bg-gray-800 h-100 grid grid-row-1 gap-1"> */}
+    {/* <div className="App bg-gray-800 h-100 grid grid-row-1 gap-1">
     {/* <div className="App bg-gray-800 h-100 grid grid-cols-1 gap-0 "> */}
 
       <header className="header">
         {/*le pasamos como parametros los 3 iconos de la parte derecha*/}
-        <Navbar
+       <Navbar
           buttons={[
            {
             link: "/",
@@ -38,27 +38,7 @@ function Student(children) {
           ]}
           
         />
-                {/* <Navbar
-          buttons={[
-            //home
-            <Link to={"/"}>
-              <HomeIcon className="w-6 "/>
-            </Link>,
-
-
-
-            //bookmark
-            <Link to={"/applications"}>
-              <BriefcaseIcon className="w-6 "  />
-            </Link>,
-            
-            //usuario
-            <Link to={"/settings"}>
-              <UserIcon className="w-6" />
-            </Link>,
-          ]}
-          
-        /> */}
+ 
               
       </header>
      

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 // Icons
 import { BsBuilding, BsPeople,BsBriefcase, BsHouse } from "react-icons/bs";
 
@@ -12,7 +13,6 @@ const Sidebar = () => {
           showMenu ? "left-0" : "-left-full"
         }`}
       >
-        {/* Profile */}
         <div className="flex flex-col items-center justify-center p-8 gap-2 h-[30vh]">
           <img
             src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-260nw-1095249842.jpg"
@@ -25,33 +25,21 @@ const Sidebar = () => {
         </div>
         {/* Nav */}
         <div className="bg-primary-300 p-8 rounded-tr-[100px] h-[70vh] flex flex-col justify-between gap-8">
-          <nav className="flex flex-col gap-8">
-            <a
-              href="/admin/"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <BsHouse  /> Home
-            </a>
-            <a
-              href="/admin/users"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <BsPeople/> Usuarios
-            </a>
-            <a
-              href="/admin/company"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <BsBuilding /> Empresas
-            </a>
-            <a
-              href="../../pages/dashboard/adminCompany"
-              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
-            >
-              <BsBriefcase /> Trabajos
-            </a>
-          </nav>
-        </div>
+        <nav className="flex flex-col gap-8">
+          <Link to="/admin/" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
+            <BsHouse /> Home
+          </Link>
+          <Link to="/admin/users" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
+            <BsPeople /> Usuarios
+          </Link>
+          <Link to="/admin/company" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
+            <BsBuilding /> Empresas
+          </Link>
+          <Link to="#" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
+            <BsBriefcase /> Trabajos
+          </Link>
+        </nav>
+      </div>
       </div>
     </>
   );

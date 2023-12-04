@@ -7,7 +7,8 @@
 <p align="center" style="font-size: 1.2rem;"> Página simple <b>en desarrollo</b> donde alumnos de la UTN FRRO podrán postularse a ofertas de trabajo y a las empresas subir dichas ofertas</p>
  
 <hr /> 
-## Instrucciones de instalación y uso
+
+### Instrucciones de instalación y uso
 
 <ol>
   <li>Clona el repositorio en tu máquina local.</li>

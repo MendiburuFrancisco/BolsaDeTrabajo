@@ -21,7 +21,7 @@ const TableComponent = ({ headers, data }) => {
   return (
     <div className="container  mx-auto px-4 sm:px-8">
       {/* <div className="py-8"> */}
-      <div className="bg-white shadow shadow-md i p-2">
+      <div className="bg-white  shadow-md i p-2">
         <div className=" overflow-hidden rounded border-b border-gray-200">
           <table className="min-w-full bg-white">
             <thead className="bg-gray-800 text-white">

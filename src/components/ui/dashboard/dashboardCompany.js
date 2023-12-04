@@ -246,7 +246,7 @@ function AdminEmpresa() {
       )}
     </div>
   </div>
-  <table className="w-full bg-white rounded-lg shadow-md mt-8">
+  <table className="w-full bg-white rounded-lg shadow-md my-8">
     <thead>
       <tr>
         <th scope="col"className="border p-2">#</th>

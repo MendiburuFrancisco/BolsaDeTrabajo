@@ -351,7 +351,7 @@ function AdminJobs() {
       )}
     </div>
   </div>
-  <table className="w-full table-fixed border-collapse bg-white rounded-lg shadow-md mt-8">
+  <table className="w-full table-fixed border-collapse bg-white rounded-lg shadow-md my-8">
   <thead>
     <tr>
       <th scope="col" className="border p-2 w-1/8">#</th>
@@ -360,12 +360,13 @@ function AdminJobs() {
       <th scope="col" className="border p-2 w-1/8">Fecha hasta</th>
       <th scope="col" className="border p-2 w-1/4">Descripcion</th>
       <th scope="col" className="border p-2 w-1/8">Sueldo</th>
-      <th scope="col" className="border p-2 w-1/8">Ubicacion</th>
+      <th scope="col" className="border p-2 w-1/8">Experiencia</th>
+      {/* <th scope="col" className="border p-2 w-1/8">Ubicacion</th>
       <th scope="col" className="border p-2 w-1/8">id Usuario</th>
       <th scope="col" className="border p-2 w-1/8">id empr</th>
       <th scope="col" className="border p-2 w-1/8">id ti</th>
       <th scope="col" className="border p-2 w-1/8">link</th>
-      <th scope="col" className="border p-2 w-1/8">exp</th>
+      <th scope="col" className="border p-2 w-1/8">exp</th> */}
 
 
 
@@ -382,11 +383,11 @@ function AdminJobs() {
             <td className="border p-2">{val.fecha_hasta}</td>
             <td className="border p-2">{val.descripcion}</td>
             <td className="border p-2">{val.sueldo}</td>
-            <td className="border p-2">{val.ubicacion}</td>
+            {/* <td className="border p-2">{val.ubicacion}</td>
             <td className="border p-2">{val.id_usuario}</td>
             <td className="border p-2">{val.id_empresa}</td>
             <td className="border p-2">{val.id_tipo_contrato}</td>
-            <td className="border p-2">{val.link}</td>
+            <td className="border p-2">{val.link}</td> */}
             <td className="border p-2">{val.nivel_experiencia}</td>
             <td className="border p-2">     
     <button

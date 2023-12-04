@@ -13,7 +13,7 @@ import { JobProvider } from "./context/JobContext";
 
 import AdminUser from "./pages/dashboard/adminUsers";
 import AdminCompany from "./pages/dashboard/adminCompany";
-import AdminJobs from "./components/ui/dashboard/dashboardJobs";
+import AdminJob from "./pages/dashboard/adminJobs";
 import AdminHome from "./pages/dashboard/adminHome";
 import AdminJobType from "./pages/dashboard/adminJobTypes";
 
@@ -41,7 +41,7 @@ function App() {
           <Route path="/admin" element={<AdminHome/>} />
           <Route path="/admin/company/" element={<AdminCompany />} />
           <Route path="/admin/users/" element={<AdminUser />} />
-          <Route path="/admin/jobs/" element={<AdminJobs />} />
+          <Route path="/admin/jobs/" element={<AdminJob />} />
           <Route path="/admin/jobtype/" element={<AdminJobType />} />        
         </Routes>
           </JobProvider>

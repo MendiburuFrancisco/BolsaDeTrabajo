@@ -16,10 +16,11 @@ function AdminJobType() {
       .then(() => {
         Swal.fire({
           title: "<strong>Registro exitoso!!!</strong>",
-          html: `<i>El usuario con ID <strong>${id}</strong> fue registrado con éxito!!!</i>`,
+          html: `<i>El tipo de trabajo <strong>${tipo}</strong> fue registrado con éxito!!!</i>`,
           icon: "success",
           timer: 3000,
         });
+        getTipoTrabajo();
       })
       .catch(function (error) {
         Swal.fire({
@@ -34,7 +35,7 @@ function AdminJobType() {
 
   const update = () => {
     if (!id) {
-      console.error("ID del usuario no disponible");
+      console.error("ID de tipo de trabajo no disponible");
       return;
     }
     updateJobTypeRequest({id,tipo,descripcion})
@@ -129,7 +130,6 @@ function AdminJobType() {
   return (
     <div className="container mx-auto">
       <div className="bg-white rounded-lg shadow-md p-8">
-        {/* Resto del código... */}
         <div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
@@ -188,7 +188,7 @@ function AdminJobType() {
       </div>
 
       
-      <table className="w-full bg-white rounded-lg shadow-md mt-8">
+      <table className="w-full bg-white rounded-lg shadow-md my-8">
         <thead>
           <tr className="mb-8">
             <th scope="col" className="border p-2 ">

@@ -244,7 +244,7 @@ function AdminUsers() {
           )}
         </div>
       </div>
-      <table className="w-full bg-white rounded-lg shadow-md mt-8">
+      <table className="w-full bg-white rounded-lg shadow-md my-8">
         <thead>
           <tr className="mb-8">
             <th scope="col" className="border p-2 ">#</th>

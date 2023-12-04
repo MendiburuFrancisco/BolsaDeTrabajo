@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { getJobsRequest, updateJobRequest, deleteJobRequest, createJobRequest } from "../../../api/jobs.request";
 
 import Swal from 'sweetalert2';
 
@@ -22,7 +23,23 @@ function AdminJobs() {
   const [trabajosList, setTrabajosList] = useState([]);
 
   const add = () => {
-    Axios.post("http://localhost:8888/jobs", {
+    // Axios.post("http://localhost:8888/jobs", {
+    //   titulo: titulo,
+    //   id_usuario: id_usuario,
+    //   id_empresa: id_empresa,
+    //   id_tipo_trabajo: id_tipo_trabajo,
+    //   fecha_desde: fecha_desde,
+    //   fecha_hasta: fecha_hasta,
+    //   descripcion: descripcion,
+    //   sueldo: sueldo,
+    //   ubicacion: ubicacion,
+    //   link: link,
+    //   verified: true,
+    //   empresa:empresa,
+    //   nivel_experiencia:nivel_experiencia,
+      
+    // })
+    const new_job = {
       titulo: titulo,
       id_usuario: id_usuario,
       id_empresa: id_empresa,
@@ -36,9 +53,10 @@ function AdminJobs() {
       verified: true,
       empresa:empresa,
       nivel_experiencia:nivel_experiencia,
-      
-    }).then(() => {
-       getTrabajos();
+    }
+    createJobRequest(new_job)
+    .then(() => {
+      getTrabajos();
       limpiarCampos();
       Swal.fire({
         title: "<strong>Registro exitoso!!!</strong>",
@@ -62,22 +80,24 @@ function AdminJobs() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/jobs/${id}`, {
-        id: id,
-        titulo: titulo,
-        id_usuario: id_usuario,
-        id_empresa: id_empresa,
-        id_tipo_trabajo: id_tipo_trabajo,
-        fecha_desde: fecha_desde,
-        fecha_hasta: fecha_hasta,
-        descripcion: descripcion,
-        sueldo: sueldo,
-        ubicacion: ubicacion,
-        link: link,
-        empresa: empresa,
-        nivel_experiencia:nivel_experiencia,
+    // Axios.put(`http://localhost:8888/jobs/${id}`, {
+    //     id: id,
+    //     titulo: titulo,
+    //     id_usuario: id_usuario,
+    //     id_empresa: id_empresa,
+    //     id_tipo_trabajo: id_tipo_trabajo,
+    //     fecha_desde: fecha_desde,
+    //     fecha_hasta: fecha_hasta,
+    //     descripcion: descripcion,
+    //     sueldo: sueldo,
+    //     ubicacion: ubicacion,
+    //     link: link,
+    //     empresa: empresa,
+    //     nivel_experiencia:nivel_experiencia,
 
-      }).then(() => {
+    //   }).then(() => {
+        updateJobRequest({id,titulo,id_usuario,id_empresa,id_tipo_trabajo, fecha_desde,fecha_hasta,descripcion,sueldo,ubicacion,link,empresa,nivel_experiencia})
+        .then(() => {
         getTrabajos();
         limpiarCampos();
         Swal.fire({
@@ -106,7 +126,8 @@ function AdminJobs() {
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:8888/jobs/${val.id}`).then((res) => {
+         // Axios.delete(`http://localhost:8888/jobs/${val.id}`).then((res) => {
+            deleteJobRequest(val.id).then((res) => {
             getTrabajos();
             limpiarCampos();
             Swal.fire({
@@ -163,8 +184,9 @@ function AdminJobs() {
     }
 
     const getTrabajos = () => {
-       Axios.get("http://localhost:8888/jobs").then((response) => {
-        const jsonData = response.data;
+       //Axios.get("http://localhost:8888/jobs").then((response) => {
+       getJobsRequest().then((response) => {
+       const jsonData = response.data;
         setTrabajosList(jsonData);
        })
        .catch((error) => {

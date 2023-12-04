@@ -8,6 +8,19 @@
  
 <hr /> 
 
+## Instrucciones de instalación y uso
+
+<ol>
+  <li>Clona el repositorio en tu máquina local.</li>
+  <li>Navega hasta el directorio del proyecto: `cd API`.</li>
+  <li>Instala las dependencias del proyecto: `npm install`.</li>
+  <li>Inicia el servidor: `npm start`.</li>
+  <li>El servidor estará disponible en `http://localhost:3000`.</li>
+  
+</ol>
+
+
+
 <!-- ## The problem
 Ocurre que es incomodo navegar a través de la bolsa de trabajo de la facultad por diferentes motivos: 
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Icons
 import { BsBuilding, BsPeople,BsBriefcase, BsHouse } from "react-icons/bs";
 
-const Sidebar = () => {
+const Sidebar = ({links}) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <>
@@ -26,19 +26,19 @@ const Sidebar = () => {
         {/* Nav */}
         <div className="bg-primary-300 p-8 rounded-tr-[100px] h-[70vh] flex flex-col justify-between gap-8">
         <nav className="flex flex-col gap-8">
-          <Link to="/admin/" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
-            <BsHouse /> Home
-          </Link>
-          <Link to="/admin/users" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
-            <BsPeople /> Usuarios
-          </Link>
-          <Link to="/admin/company" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
-            <BsBuilding /> Empresas
-          </Link>
-          <Link to="#" className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors">
-            <BsBriefcase /> Trabajos
-          </Link>
+          {
+          
+          links.map((link) => (
+            <Link
+              to={link.path}
+              className="flex items-center gap-4 text-white py-2 px-4 rounded-xl hover:bg-primary-900/50 transition-colors"
+            >
+              {link.icon} {link.title}
+            </Link>
+          ))  
+          }
         </nav>
+
       </div>
       </div>
     </>

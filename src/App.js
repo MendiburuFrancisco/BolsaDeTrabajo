@@ -16,6 +16,7 @@ import AdminCompany from "./pages/dashboard/adminCompany";
 import AdminJob from "./pages/dashboard/adminJobs";
 import AdminHome from "./pages/dashboard/adminHome";
 import AdminJobType from "./pages/dashboard/adminJobTypes";
+import AdminRol from "./pages/dashboard/adminRoles";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -42,7 +43,8 @@ function App() {
           <Route path="/admin/company/" element={<AdminCompany />} />
           <Route path="/admin/users/" element={<AdminUser />} />
           <Route path="/admin/jobs/" element={<AdminJob />} />
-          <Route path="/admin/jobtype/" element={<AdminJobType />} />        
+          <Route path="/admin/jobtype/" element={<AdminJobType />} />  
+          <Route path="/admin/roles/" element={<AdminRol />} />
         </Routes>
           </JobProvider>
 

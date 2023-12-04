@@ -24,61 +24,12 @@ const Settings = () => {
     <>
       <Student>
         <div className="flex justify-center p-4  h-screen">
-          <div className="flex">
-            {/* Sidebar */}
-            {/* <div className="w-96  p-5 rounded-l-lg shadow-lg"> */}
-            <div className="w-80 p-5 ">
-              <div className="flex items-center space-x-4 p-2 mb-5">
-                <div>
-                  <h4 className="font-semibold text-white text-lg text-gray-700">
-                    Francisco Mendiburu
-                  </h4>
-                  
-                  <span className="text-sm text-gray-200">
-                    fmendiburu@frro.utn.edu.ar
-                  </span>
-                  {/* <br/> */}
-                  {/* <span className="text-sm text-gray-200">
-                    Ingeniería en Sistemas
-                  </span> */}
-                </div>
-              </div>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center space-x-3 text-blue-200">
-                  <WrenchIcon className="h-5 w-5" />
-                  <span>Preferencias</span>
-                </li>
-                <li className="flex items-center space-x-3 text-gray-300">
-                  <IdentificationIcon className="h-5 w-5" />
-                  <span className="rounded">Informacion</span>
-                </li>
-                <li className="">
-                  <button className="flex w-full py-2 rounded items-center space-x-3 text-gray-300 hover:bg-blue-500 hover:text-">
-                    <SquaresPlusIcon className="h-5 w-5" />
-                    <span className="rounded">Trabajos subidos</span>
-                  </button>
-                </li>
-              </ul>
-              <br />
-              <br />
-              <br />
-              <hr />
- 
-              <button className="mt-auto flex items-center py-2 w-full py-2 rounded items-center space-x-3 text-red-400 hover:bg-red-500 hover:text-white">
-                <ArrowLeftOnRectangleIcon className="h-5 w-5" />
-
-                <span>Cerrar sesión</span>
-              </button>
-            </div>
-
+         
             {/* Form */}
             <div className="flex-1 bg-white p-5 rounded-r-lg shadow-lg  ">
               <h2 className="font-bold text-2xl text-gray-700 mb-5 ">Perfil</h2>
-              <div className="grid grid-cols-4 gap-4 mb-5 ">
+              <div className="grid grid-cols-2 gap-4 mb-5 ">
               <PersonalInfo />
-              <MultiSelectDropdown placeholder="Seleccionar carreras" options={["ISI","IE","IQ","IM"]} />
-              
-              <>.</>
               <ContactInfo />
   
               
@@ -93,7 +44,7 @@ const Settings = () => {
               </div>
             </div>
           </div>
-        </div>
+ 
       </Student>
     </>
   );

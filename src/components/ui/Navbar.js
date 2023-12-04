@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import UTN_LOGO from "./../../assets/img/logo_utn.png";
 import "../../assets/css/Navbar.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import {
+  Bars3Icon,
+  MagnifyingGlassIcon,
+  ArrowLeftOnRectangleIcon,
+  XMarkIcon
+} from "@heroicons/react/20/solid";
+
 import { useJobContext } from "../../context/JobContext";
+import ProfileDropdown from "./ProfileDropDown";
 
-// import Filter from "./JobFilter.js";
-
-//Plantilla para boton hamburguesa
 class NavBarButton extends React.Component {
-  constructor({ type, icon, text }) {
+  constructor({ type, icon, text,onClick }) {
     super();
     this.type = type;
     this.icon = icon;
     this.text = text;
+    this.onClick = onClick;
   }
 
   render() {
@@ -22,9 +27,10 @@ class NavBarButton extends React.Component {
       <button
         className={
           this.type +
-          " flex items-center space-x-2 text-white px-4 py-2 rounded"
+          " flex items-center space-x-2 text-white px-4 py-2 rounded "
         }
         title={this.text}
+        onClick={this.onClick}
       >
         {this.icon}
       </button>
@@ -36,8 +42,77 @@ const Navbar = ({ buttons, esconde }) => {
   const [search, setSearch] = useState("");
   const { searchTerm, setSearchTerm } = useJobContext();
 
+  const [isSideBarOpen, setisSideBarOpen] = useState(false);
+
   const applyFilters = () => {
     setSearchTerm(search);
+  };
+
+  const insertButtonInNavbar = (button, index) => {
+    if (button.options?.length > 0)
+      return (
+        <ProfileDropdown
+          options={button.options}
+          icon={button.icon}
+          text={button.text}
+        />
+      );
+
+    return (
+      <Link to={button.link}>
+        <button
+          key={index}
+          className="desktopbutton text-white text-center flex flex-col items-center px-4 py-2 text-xs  hover:text-blue-200  transition duration-300"
+        >
+          {button.icon}
+          <span>{button.text}</span>
+        </button>
+      </Link>
+    );
+  };
+
+  const SideBarButton = (icon,text,link) => {
+    return (
+      <Link
+            to={link}
+            className="block px-4 py-2  text-white hover:underline"
+          >
+          {icon}
+          <span>{text}</span>
+
+      </Link>
+    )
+
+  }
+
+  const inserButtonInSideBar = (button, index) => {
+    let botones = [];
+
+    if (button.options?.length > 0) {
+      console.log(button.options);
+      button.options.map((option, index) => {
+        botones.push( 
+          <Link
+            to={option.link}
+            className="block px-4 py-2  text-white hover:underline"
+            onClick={() => setisSideBarOpen(false)}
+          >
+            {option.text}
+          </Link>
+        );
+      });
+      return <>      
+      {botones} </>;
+    }
+
+    return (
+      <Link
+        to={button.link}
+        className="block px-4 py-2  text-white hover:underline"
+      >
+        {button.text}
+      </Link>
+    );
   };
 
   const handleInputChange = (event) => {
@@ -77,6 +152,7 @@ const Navbar = ({ buttons, esconde }) => {
             aria-label="Buscar trabajos"
             role="search"
             value={search}
+            onKeyPress  ={(e) => { if (e.key === 'Enter') applyFilters() }}
             onChange={handleInputChange}
           />
 
@@ -91,7 +167,6 @@ const Navbar = ({ buttons, esconde }) => {
             onChange={handleInputChange}
           />
           <button className="rounded-r-full text-gray-700 px-4"  */}
-
 
           <button
             className="absolute px-2 py-1 text-xs text-gray-400 
@@ -124,27 +199,54 @@ const Navbar = ({ buttons, esconde }) => {
         {/* Right side with buttons */}
         <div className="flex space-x-4   ">
           {buttons.map((button, index) => (
-            // <div className=" flex justify-center items-center h-full ">
-
-            <Link to={button.link}>
-              <button
-                key={index}
-                className="desktopbutton text-white text-center flex flex-col items-center px-4 py-2 text-xs  hover:text-blue-200  transition duration-300"
-              >
-                {button.icon}
-                {button.text}
-              </button>
-            </Link>
+            <>{insertButtonInNavbar(button, index)}</>
           ))}
 
           {/*boton hamburguesa*/}
           <NavBarButton
             type="cellphonebutton hidden"
             icon={<Bars3Icon className="w-6 h-6" />}
+            onClick={() => setisSideBarOpen(!isSideBarOpen)}
             text="Menu"
           />
         </div>
       </nav>
+
+      {isSideBarOpen && (
+        <sidebar className=" bg-gray-700  absolute  w-full h-screen py-2      z-20">
+            <br />
+          
+          <div className="    pl-4 space-x-4 flex justify-between">
+            <Link to={"/"}>
+              <img src={UTN_LOGO} alt="logo" className=" h-8" />
+              <div className="inline-block text-white">Bolsa de Trabajo</div>
+            </Link>
+            <button className="text-white text-2xl px-8"
+                    onclick={() => setisSideBarOpen(false)}
+            ><XMarkIcon className="h-10 w-10" /></button>
+          </div>
+          <br />
+          <br />
+          {buttons.map((button, index) =>
+            inserButtonInSideBar(button, index)
+ 
+          )}
+
+          <div classname="absolute bottom-1">
+            <br />
+            <br />
+            <br />
+            <hr className="my-2" />
+            <Link
+              to="/login"
+              className="block px-4 py-2 text-sm text-white hover:underline"
+            >
+              <ArrowLeftOnRectangleIcon className="inline h-5 w-5 mr-2" />
+              Cerrar sesión
+            </Link>
+          </div>
+        </sidebar>
+      )}
       <div className="flex items-center justify-center h-14" />
     </>
   );

@@ -15,7 +15,7 @@ import AdminUser from "./pages/dashboard/adminUsers";
 import AdminCompany from "./pages/dashboard/adminCompany";
 import AdminJobs from "./components/ui/dashboard/dashboardJobs";
 import AdminHome from "./pages/dashboard/adminHome";
-import AdminJobType from "./components/ui/dashboard/dashboardJobType";
+import AdminJobType from "./pages/dashboard/adminJobTypes";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 

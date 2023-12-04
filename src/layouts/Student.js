@@ -3,7 +3,9 @@
 import Navbar from "./../components/ui/Navbar.js"; 
 import { Link } from 'react-router-dom'
 import Footer from "../components/ui/Footer.js";
-import { HomeIcon, BriefcaseIcon, UserIcon } from "@heroicons/react/20/solid";
+import { HomeIcon, BriefcaseIcon, UserIcon,
+        IdentificationIcon, SquaresPlusIcon
+      } from "@heroicons/react/20/solid";
 
 
  
@@ -33,6 +35,16 @@ function Student(children) {
             link: "/settings",
             icon: <UserIcon className="w-6 "/>,
             text: "Mi Perfil",
+            options:[{
+              link: '/settings',
+              icon: IdentificationIcon,
+              text: 'Informacion'
+          },
+          {
+              link: '/jobs',
+              icon: SquaresPlusIcon,
+              text: 'Trabajos subidos'
+          }]
             
            }
           ]}

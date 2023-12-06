@@ -1,7 +1,8 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
-import Axios from "axios";
-
+import { registerCompanyRequest } from "../../../api/auth.request";
+//import Axios from "axios";
+import { getCompanyRequest, updateCompanyRequest, deleteCompanyRequest } from "../../../api/company.request";
 import Swal from 'sweetalert2';
 
 function AdminEmpresa() {
@@ -15,25 +16,45 @@ function AdminEmpresa() {
   const [editar, setEditar] = useState(false);
   const [empresasList, setEmpresasList] = useState([]);
 
+
+
   const add = () => {
-    Axios.post("http://localhost:8888/auth/company/register", {
-      cuit: cuit,
-      razon_social: razon_social,
-      email: email,
-      direccion: direccion,
-      telefono: telefono,
-      password: password,
-      verified: true,
+    // Axios.post("http://localhost:8888/auth/company/register", {
+    //   cuit: cuit,
+    //   razon_social: razon_social,
+    //   email: email,
+    //   direccion: direccion,
+    //   telefono: telefono,
+    //   password: password,
+    //   verified: true,
       
-    }).then(() => {
-       getEmpresas();
-      limpiarCampos();
+    // }).then(() => {
+    const new_company =  {
+    cuit: cuit,
+    razon_social: razon_social,
+    email: email,
+    direccion: direccion,
+    telefono: telefono,
+    password: password,
+    verified: true,}
+
+    registerCompanyRequest(new_company).then((res)=> {
+      if(res.status !== 200 ){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          html: "<i>"+res.data+"</i>",
+          timer: 3000,
+        });
+      }
       Swal.fire({
         title: "<strong>Registro exitoso!!!</strong>",
         html: "<i>El empleado <strong>" + razon_social + "</strong> fue registrado con éxito!!!</i>",
         icon: 'success',
         timer: 3000
       });
+      getEmpresas();
+      limpiarCampos();
     }).catch(function (error) {
       Swal.fire({
         icon: 'error',
@@ -50,15 +71,16 @@ function AdminEmpresa() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/company/${id}`, {
-        id: id,
-        cuit: cuit,
-        razon_social: razon_social,
-        direccion: direccion,
-        email: email,
-        telefono: telefono,
-        password: password,
-      }).then(() => {
+    // Axios.put(`http://localhost:8888/company/${id}`, {
+    //     id: id,
+    //     cuit: cuit,
+    //     razon_social: razon_social,
+    //     direccion: direccion,
+    //     email: email,
+    //     telefono: telefono,
+    //     password: password,
+    //   }).then(() => {
+      updateCompanyRequest({id,cuit,razon_social,direccion,email,telefono, password}).then(() => {
         getEmpresas();
         limpiarCampos();
         Swal.fire({
@@ -87,7 +109,8 @@ function AdminEmpresa() {
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:8888/company/${val.id}`).then((res) => {
+          //Axios.delete(`http://localhost:8888/company/${val.id}`).then((res) => {
+         deleteCompanyRequest(val.id).then((res) => {
             getEmpresas();
             limpiarCampos();
             Swal.fire({
@@ -131,8 +154,10 @@ function AdminEmpresa() {
     }
 
     const getEmpresas = () => {
-       Axios.get("http://localhost:8888/company").then((response) => {
-        const jsonData = response.data.payload;
+       //Axios.get("http://localhost:8888/company").then((response) => {
+       getCompanyRequest() 
+       .then((response) => {
+       const jsonData = response.data.payload;
         setEmpresasList(jsonData);
        })
        .catch((error) => {
@@ -246,7 +271,7 @@ function AdminEmpresa() {
       )}
     </div>
   </div>
-  <table className="w-full bg-white rounded-lg shadow-md mt-8">
+  <table className="w-full bg-white rounded-lg shadow-md my-8">
     <thead>
       <tr>
         <th scope="col"className="border p-2">#</th>

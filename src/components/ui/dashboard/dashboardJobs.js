@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { getJobsRequest, updateJobRequest, deleteJobRequest, createJobRequest } from "../../../api/jobs.request";
 
 import Swal from 'sweetalert2';
 
@@ -22,7 +23,23 @@ function AdminJobs() {
   const [trabajosList, setTrabajosList] = useState([]);
 
   const add = () => {
-    Axios.post("http://localhost:8888/jobs", {
+    // Axios.post("http://localhost:8888/jobs", {
+    //   titulo: titulo,
+    //   id_usuario: id_usuario,
+    //   id_empresa: id_empresa,
+    //   id_tipo_trabajo: id_tipo_trabajo,
+    //   fecha_desde: fecha_desde,
+    //   fecha_hasta: fecha_hasta,
+    //   descripcion: descripcion,
+    //   sueldo: sueldo,
+    //   ubicacion: ubicacion,
+    //   link: link,
+    //   verified: true,
+    //   empresa:empresa,
+    //   nivel_experiencia:nivel_experiencia,
+      
+    // })
+    const new_job = {
       titulo: titulo,
       id_usuario: id_usuario,
       id_empresa: id_empresa,
@@ -36,9 +53,10 @@ function AdminJobs() {
       verified: true,
       empresa:empresa,
       nivel_experiencia:nivel_experiencia,
-      
-    }).then(() => {
-       getTrabajos();
+    }
+    createJobRequest(new_job)
+    .then(() => {
+      getTrabajos();
       limpiarCampos();
       Swal.fire({
         title: "<strong>Registro exitoso!!!</strong>",
@@ -62,22 +80,24 @@ function AdminJobs() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/jobs/${id}`, {
-        id: id,
-        titulo: titulo,
-        id_usuario: id_usuario,
-        id_empresa: id_empresa,
-        id_tipo_trabajo: id_tipo_trabajo,
-        fecha_desde: fecha_desde,
-        fecha_hasta: fecha_hasta,
-        descripcion: descripcion,
-        sueldo: sueldo,
-        ubicacion: ubicacion,
-        link: link,
-        empresa: empresa,
-        nivel_experiencia:nivel_experiencia,
+    // Axios.put(`http://localhost:8888/jobs/${id}`, {
+    //     id: id,
+    //     titulo: titulo,
+    //     id_usuario: id_usuario,
+    //     id_empresa: id_empresa,
+    //     id_tipo_trabajo: id_tipo_trabajo,
+    //     fecha_desde: fecha_desde,
+    //     fecha_hasta: fecha_hasta,
+    //     descripcion: descripcion,
+    //     sueldo: sueldo,
+    //     ubicacion: ubicacion,
+    //     link: link,
+    //     empresa: empresa,
+    //     nivel_experiencia:nivel_experiencia,
 
-      }).then(() => {
+    //   }).then(() => {
+        updateJobRequest({id,titulo,id_usuario,id_empresa,id_tipo_trabajo, fecha_desde,fecha_hasta,descripcion,sueldo,ubicacion,link,empresa,nivel_experiencia})
+        .then(() => {
         getTrabajos();
         limpiarCampos();
         Swal.fire({
@@ -106,7 +126,8 @@ function AdminJobs() {
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:8888/jobs/${val.id}`).then((res) => {
+         // Axios.delete(`http://localhost:8888/jobs/${val.id}`).then((res) => {
+            deleteJobRequest(val.id).then((res) => {
             getTrabajos();
             limpiarCampos();
             Swal.fire({
@@ -163,8 +184,9 @@ function AdminJobs() {
     }
 
     const getTrabajos = () => {
-       Axios.get("http://localhost:8888/jobs").then((response) => {
-        const jsonData = response.data;
+       //Axios.get("http://localhost:8888/jobs").then((response) => {
+       getJobsRequest().then((response) => {
+       const jsonData = response.data;
         setTrabajosList(jsonData);
        })
        .catch((error) => {
@@ -351,7 +373,7 @@ function AdminJobs() {
       )}
     </div>
   </div>
-  <table className="w-full table-fixed border-collapse bg-white rounded-lg shadow-md mt-8">
+  <table className="w-full table-fixed border-collapse bg-white rounded-lg shadow-md my-8">
   <thead>
     <tr>
       <th scope="col" className="border p-2 w-1/8">#</th>
@@ -360,12 +382,13 @@ function AdminJobs() {
       <th scope="col" className="border p-2 w-1/8">Fecha hasta</th>
       <th scope="col" className="border p-2 w-1/4">Descripcion</th>
       <th scope="col" className="border p-2 w-1/8">Sueldo</th>
-      <th scope="col" className="border p-2 w-1/8">Ubicacion</th>
+      <th scope="col" className="border p-2 w-1/8">Experiencia</th>
+      {/* <th scope="col" className="border p-2 w-1/8">Ubicacion</th>
       <th scope="col" className="border p-2 w-1/8">id Usuario</th>
       <th scope="col" className="border p-2 w-1/8">id empr</th>
       <th scope="col" className="border p-2 w-1/8">id ti</th>
       <th scope="col" className="border p-2 w-1/8">link</th>
-      <th scope="col" className="border p-2 w-1/8">exp</th>
+      <th scope="col" className="border p-2 w-1/8">exp</th> */}
 
 
 
@@ -382,11 +405,11 @@ function AdminJobs() {
             <td className="border p-2">{val.fecha_hasta}</td>
             <td className="border p-2">{val.descripcion}</td>
             <td className="border p-2">{val.sueldo}</td>
-            <td className="border p-2">{val.ubicacion}</td>
+            {/* <td className="border p-2">{val.ubicacion}</td>
             <td className="border p-2">{val.id_usuario}</td>
             <td className="border p-2">{val.id_empresa}</td>
             <td className="border p-2">{val.id_tipo_contrato}</td>
-            <td className="border p-2">{val.link}</td>
+            <td className="border p-2">{val.link}</td> */}
             <td className="border p-2">{val.nivel_experiencia}</td>
             <td className="border p-2">     
     <button

@@ -3,6 +3,7 @@ import {
   BsPeople,
   BsBriefcase,
   BsArrowRight,
+  BsFolderPlus  
 } from "react-icons/bs";
 import React from "react";
 
@@ -10,28 +11,28 @@ const cards = [
   {
     name: "Usuarios",
     href: "/admin/users",
-    icon: BsPeople,
+    icon: <BsPeople/>,
     description:
       "Ver usuarios registrados en la base de datos de nuestro sistema, modificar sus datos, dar de alta usuarios nuevos y eliminarlos si se desea.",
   },
   {
     name: "Empresas",
     href: "/admin/company",
-    icon: BsBuilding,
+    icon: <BsBuilding/>,
     description:
       "Ver empresas registradas en la base de datos de nuestro sistema, modificar sus datos, dar de alta empresas nuevas y eliminarlas si se desea.",
   },
   {
     name: "Trabajos",
     href: "/admin/jobs",
-    icon: BsBriefcase,
+    icon: <BsBriefcase/>,
     description:
       "Ver trabajos registrados en la base de datos de nuestro sistema, modificar sus datos de la oferta, dar de alta puestos de trabajos nuevos y eliminarlos si se desea.",
   },
   {
-    name: "Tipos de Trabajo",
+    name: "Tipo Trabajo",
     href: "/admin/jobtype",
-    icon: BsBriefcase,
+    icon: <BsFolderPlus />,
     description:
       "Ver tipos de trabajo registrados en la base de datos de nuestro sistema, modificar sus datos de la oferta, dar de alta tipos de trabajos nuevos y eliminarlos si se desea.",
   },
@@ -45,7 +46,7 @@ function dashboardHome() {
           <div class="flex rounded-lg h-full dark:bg-gray-800 p-8 flex-col">
             <div class="flex items-center mb-3">
               <div class="w-10 h-10 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
-                <BsPeople />
+                {card.icon}
               </div>
               <h2 class="text-white dark:text-white text-2xl font-medium">
                 {card.name}

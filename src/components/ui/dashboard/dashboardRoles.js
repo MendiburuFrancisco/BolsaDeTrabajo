@@ -1,26 +1,27 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { getJobTypesRequest, updateJobTypeRequest,deleteJobTypeRequest, createJobTypeRequest } from "../../../api/jobTypes.request";
+import { getRolesRequest, updateRolesRequest,deleteRolesRequest, createRolesRequest } from "../../../api/roles.request";
 import Swal from "sweetalert2";
+import { getRoles } from "@testing-library/react";
 
-function AdminJobType() {
+function AdminRoles() {
   const [id, setId] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [editar, setEditar] = useState(false);
-  const [tipoTrabajoList, setTipoTrabajoList] = useState([]);
+  const [rolesList, setRolesList] = useState([]);
 
   const add = () => {
-    createJobTypeRequest({tipo,descripcion})
+    createRolesRequest({name,description})
       .then(() => {
         Swal.fire({
           title: "<strong>Registro exitoso!!!</strong>",
-          html: `<i>El tipo de trabajo <strong>${tipo}</strong> fue registrado con éxito!!!</i>`,
+          html: `<i>El tipo de rol <strong>${name}</strong> fue registrado con éxito!!!</i>`,
           icon: "success",
           timer: 3000,
         });
-        getTipoTrabajo();
+        getRoles();
       })
       .catch(function (error) {
         Swal.fire({
@@ -30,21 +31,21 @@ function AdminJobType() {
           timer: 3000,
         });
       });
-    console.log(id, tipo, descripcion);
+    console.log(id, name, description);
   };
 
   const update = () => {
     if (!id) {
-      console.error("ID de tipo de trabajo no disponible");
+      console.error("ID de tipo de rol no disponible");
       return;
     }
-    updateJobTypeRequest({id,tipo,descripcion})
+    updateRolesRequest({id,name,description})
       .then(() => {
-        getTipoTrabajo();
+        getRoles();
         limpiarCampos();
         Swal.fire({
           title: "<strong>Actualización exitosa!!!</strong>",
-          html: `<i>El tipo de trabajo con ID <strong>${id}</strong> fue actualizado con éxito!!!</i>`,
+          html: `<i>El tipo de rol con ID <strong>${id}</strong> fue actualizado con éxito!!!</i>`,
           icon: "success",
           timer: 3000,
         });
@@ -61,10 +62,10 @@ function AdminJobType() {
       });
   };
 
-  const deleteTipoTrabajo = (id) => {
+  const deleteRoles = (id) => {
     Swal.fire({
       title: "Confirmar eliminación?",
-      html: `<i>Realmente desea eliminar el tipo de trabajo con ID <strong>${id}</strong>?</i>`,
+      html: `<i>Realmente desea eliminar el rol con ID <strong>${id}</strong>?</i>`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -72,13 +73,13 @@ function AdminJobType() {
       confirmButtonText: "Si, eliminarlo!",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteJobTypeRequest(id)
+        deleteRolesRequest(id)
           .then(() => {
-            getTipoTrabajo();
+            getRoles();
             limpiarCampos();
             Swal.fire({
               icon: "success",
-              title: `El tipo de trabajo con ID ${id} fue eliminado.`,
+              title: `El rol de usuario con ID ${id} fue eliminado.`,
               showConfirmButton: false,
               timer: 2000,
             });
@@ -87,7 +88,7 @@ function AdminJobType() {
             Swal.fire({
               icon: "error",
               title: "Oops...",
-              text: "No se logró eliminar el tipo de trabajo!",
+              text: "No se logró eliminar el rol!",
               footer:
                 JSON.parse(JSON.stringify(error)).message === "Network Error"
                   ? "Intente más tarde"
@@ -100,48 +101,51 @@ function AdminJobType() {
 
   const limpiarCampos = () => {
     setId("");
-    setTipo("");
-    setDescripcion("");
+    setName("");
+    setDescription("");
     setEditar(false);
   };
 
-  const editarTipoTrabajo = (val) => {
+  const editarRoles = (val) => {
     setEditar(true);
     setId(val.id);
-    setTipo(val.tipo);
-    setDescripcion(val.descripcion);
+    setName(val.name);
+    setDescription(val.description);
   };
 
-  const getTipoTrabajo = () => {
-    getJobTypesRequest()
+  const getRoles = () => {
+    getRolesRequest()
       .then((response) => {
         const jsonData = response.data.payload;
-        setTipoTrabajoList(jsonData);
+        setRolesList(jsonData);
       })
       .catch((error) => {
-        console.error("Error al obtener usuarios:", error);
+        console.error("Error al obtener roles:", error);
       });
   };
 
   useEffect(() => {
-    getTipoTrabajo(); // Se llamará una vez después del montaje del componente
+    getRoles(); // Se llamará una vez después del montaje del componente
   }, []);
 
   return (
     <div className="container mx-auto">
       <div className="bg-white rounded-lg shadow-md p-8">
+      <h1 className="text-2xl font-bold text-center mb-6">
+      GESTIÓN DE ROLES DE USUARIOS
+    </h1>
         <div>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
-              Tipo:
+              Nombre:
             </label>
             <input
               type="text"
-              value={tipo}
+              value={name}
               onChange={(event) => {
-                setTipo(event.target.value);
+                setName(event.target.value);
               }}
-              placeholder="Ingrese el tipo"
+              placeholder="Ingrese el nombre"
               className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
             />
           </div>
@@ -151,9 +155,9 @@ function AdminJobType() {
             </label>
             <input
               type="text"
-              value={descripcion}
+              value={description}
               onChange={(event) => {
-                setDescripcion(event.target.value);
+                setDescription(event.target.value);
               }}
               placeholder="Ingrese la descripción"
               className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-300 shadow-sm ring-1 focus:ring-2 focus:ring-inset"
@@ -195,7 +199,7 @@ function AdminJobType() {
               #
             </th>
             <th scope="col" className="border p-2">
-              Tipo
+              Nombre
             </th>
             <th scope="col" className="border p-2">
               Descripción
@@ -205,15 +209,15 @@ function AdminJobType() {
           </tr>
         </thead>
         <tbody>
-          {tipoTrabajoList.map((val, key) => (
+          {rolesList.map((val, key) => (
             <tr key={val.id}>
               <th>{val.id}</th>
-              <td className="border p-2">{val.tipo}</td>
-              <td className="border p-2">{val.descripcion}</td>
+              <td className="border p-2">{val.name}</td>
+              <td className="border p-2">{val.description}</td>
               <td className="border p-2">
                 <button
                   type="button"
-                  onClick={() => editarTipoTrabajo(val)}
+                  onClick={() => editarRoles(val)}
                   className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mx-1"
                 >
                   Editar
@@ -222,7 +226,7 @@ function AdminJobType() {
               <td className="border p-2">
                 <button
                   type="button"
-                  onClick={() => deleteTipoTrabajo(val.id)}
+                  onClick={() => deleteRoles(val.id)}
                   className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded mx-1"
                 >
                   Eliminar
@@ -236,4 +240,4 @@ function AdminJobType() {
   );
 }
 
-export default AdminJobType;
+export default AdminRoles;

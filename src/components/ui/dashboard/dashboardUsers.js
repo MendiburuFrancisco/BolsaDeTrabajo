@@ -2,7 +2,7 @@ import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 import {registerRequest } from "../../../api/auth.request";
-
+import { getUsersRequest, updateUserRequest, deleteUserRequest } from "../../../api/users.request";
 import Swal from 'sweetalert2';
 
 function AdminUsers() {
@@ -38,6 +38,7 @@ function AdminUsers() {
           html: "<i>"+res.data+"</i>",
           timer: 3000,
         });
+        
       }
       Swal.fire({
         title: "<strong>Registro exitoso!!!</strong>",
@@ -45,6 +46,8 @@ function AdminUsers() {
         icon: 'success',
         timer: 3000
       });
+      getUsuarios();
+
     }).catch(function (error) {
       Swal.fire({
         icon: 'error',
@@ -62,14 +65,16 @@ function AdminUsers() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/users/${id}`,{
-      id:id,
-      nombre:nombre,
-      apellido:apellido,
-      email:email,
-      password:password,
-      legajo:legajo
-    }).then(() => {
+    // Axios.put(`http://localhost:8888/users/${id}`,{
+    //   id:id,
+    //   nombre:nombre,
+    //   apellido:apellido,
+    //   email:email,
+    //   password:password,
+    //   legajo:legajo
+    // })
+    updateUserRequest({id,nombre,apellido,email,password,legajo})
+    .then(() => {
       getUsuarios();
       limpiarCampos();
       Swal.fire({
@@ -98,7 +103,8 @@ function AdminUsers() {
       confirmButtonText: 'Si, eliminarlo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://localhost:8888/users/${val.id}`).then((res) => {
+       // Axios.delete(`http://localhost:8888/users/${val.id}`).then((res) => {
+         deleteUserRequest(val.id).then((res) => {
           getUsuarios();
           limpiarCampos();
           Swal.fire({
@@ -141,7 +147,8 @@ function AdminUsers() {
     setId(val.id);
   }
   const getUsuarios = () => {
-    Axios.get("http://localhost:8888/users")
+    //Axios.get("http://localhost:8888/users")
+    getUsersRequest()
       .then((response) => {
         const jsonData = response.data.payload;
         setUsuariosList(jsonData);
@@ -244,7 +251,7 @@ function AdminUsers() {
           )}
         </div>
       </div>
-      <table className="w-full bg-white rounded-lg shadow-md mt-8">
+      <table className="w-full bg-white rounded-lg shadow-md my-8">
         <thead>
           <tr className="mb-8">
             <th scope="col" className="border p-2 ">#</th>

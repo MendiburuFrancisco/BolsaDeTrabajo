@@ -3,7 +3,7 @@ import axios from "./axios";
 
 export const getJobTypesRequest = async () => axios.get("/jobtypes");
 
-export const getJobTypeFilterRequest = async (params) =>  axios.get("/jobtypes",{
+export const getJobTypeFilterRequest = async (params) =>  axios.get("/jobtype",{
         params:params});
  
 export const createJobTypeRequest = async (job) => axios.post("/jobtypes", job);

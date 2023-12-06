@@ -1,6 +1,6 @@
 import Footer from "../components/ui/Footer";
 import Sidebar from "../components/ui/Sidebar";
-import { BsBuilding, BsPeople,BsBriefcase, BsHouse } from "react-icons/bs";
+import { BsBuilding, BsPeople,BsBriefcase, BsHouse , BsFolderPlus } from "react-icons/bs";
 
 
 const links = [
@@ -25,9 +25,9 @@ const links = [
     icon: <BsBriefcase />,
   },
    {
-    title: "Tipos de trabajo",
+    title: "Tipo trabajo",
     path: "/admin/jobtype",
-    icon: <BsBriefcase />,
+    icon: <BsFolderPlus  />,
   }
 ];
 

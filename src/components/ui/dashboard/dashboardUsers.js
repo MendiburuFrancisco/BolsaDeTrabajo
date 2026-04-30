@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
-import Axios from "axios";
+import api from "../../../api/axios";
 import {registerRequest } from "../../../api/auth.request";
 
 import Swal from 'sweetalert2';
@@ -17,8 +17,6 @@ function AdminUsers() {
 
   const add = () => {
 
-    // Axios.post("http://localhost:8888/auth/user/register", {
-  
   const new_user =  {
     nombre: nombre,
     apellido: apellido,
@@ -62,7 +60,7 @@ function AdminUsers() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/users/${id}`,{
+    api.put(`/users/${id}`,{
       id:id,
       nombre:nombre,
       apellido:apellido,
@@ -98,7 +96,7 @@ function AdminUsers() {
       confirmButtonText: 'Si, eliminarlo!'
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete(`http://localhost:8888/users/${val.id}`).then((res) => {
+        api.delete(`/users/${val.id}`).then((res) => {
           getUsuarios();
           limpiarCampos();
           Swal.fire({
@@ -141,7 +139,7 @@ function AdminUsers() {
     setId(val.id);
   }
   const getUsuarios = () => {
-    Axios.get("http://localhost:8888/users")
+    api.get("/users")
       .then((response) => {
         const jsonData = response.data.payload;
         setUsuariosList(jsonData);

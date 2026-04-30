@@ -41,8 +41,6 @@ function Home() {
 
   return (
     <>
- 
-
       <StudentLayout className="flex items-center justify-center   ">
         <JobFilters /> 
         <p className='text-gray-300 text-left mx-5 pt-4'> Se encontraron {jobs.length} trabajos</p>

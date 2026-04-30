@@ -6,7 +6,7 @@ import PrimaryLink from './PrimaryLink';
 // import LogoNegro from '../../assets/img/logo-utn-n.png';
 import LogoNegro from '../../assets/img/logo-arania.png';
 import Swal from 'sweetalert2'
-import axios from "axios";
+import api from "../../api/axios";
 import { InputLabel, TextField} from '@material-ui/core';
 
 //import { registerCompanyRequest } from "../../api/auth.request";
@@ -64,7 +64,7 @@ function RegistrationComponent() {
             errorPassword: false,
             message: "",
           });
-          axios.post("http://localhost:8888/auth/company/register",{
+          api.post("/auth/company/register",{
           cuit:values.cuit,
           razon_social:values.razon_social,
           email:values.email,

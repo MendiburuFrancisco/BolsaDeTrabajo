@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
-import Axios from "axios";
+import api from "../../../api/axios";
 
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,7 @@ function AdminEmpresa() {
   const [empresasList, setEmpresasList] = useState([]);
 
   const add = () => {
-    Axios.post("http://localhost:8888/auth/company/register", {
+    api.post("/auth/company/register", {
       cuit: cuit,
       razon_social: razon_social,
       email: email,
@@ -50,7 +50,7 @@ function AdminEmpresa() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/company/${id}`, {
+    api.put(`/company/${id}`, {
         id: id,
         cuit: cuit,
         razon_social: razon_social,
@@ -87,7 +87,7 @@ function AdminEmpresa() {
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:8888/company/${val.id}`).then((res) => {
+          api.delete(`/company/${val.id}`).then((res) => {
             getEmpresas();
             limpiarCampos();
             Swal.fire({
@@ -131,7 +131,7 @@ function AdminEmpresa() {
     }
 
     const getEmpresas = () => {
-       Axios.get("http://localhost:8888/company").then((response) => {
+       api.get("/company").then((response) => {
         const jsonData = response.data.payload;
         setEmpresasList(jsonData);
        })

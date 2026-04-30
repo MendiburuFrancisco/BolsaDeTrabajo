@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 import { useState, useEffect } from "react";
-import Axios from "axios";
+import api from "../../../api/axios";
 
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,7 @@ function AdminJobs() {
   const [trabajosList, setTrabajosList] = useState([]);
 
   const add = () => {
-    Axios.post("http://localhost:8888/jobs", {
+    api.post("/jobs", {
       titulo: titulo,
       id_usuario: id_usuario,
       id_empresa: id_empresa,
@@ -62,7 +62,7 @@ function AdminJobs() {
       return;
     }
   
-    Axios.put(`http://localhost:8888/jobs/${id}`, {
+    api.put(`/jobs/${id}`, {
         id: id,
         titulo: titulo,
         id_usuario: id_usuario,
@@ -106,7 +106,7 @@ function AdminJobs() {
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Axios.delete(`http://localhost:8888/jobs/${val.id}`).then((res) => {
+          api.delete(`/jobs/${val.id}`).then((res) => {
             getTrabajos();
             limpiarCampos();
             Swal.fire({
@@ -163,7 +163,7 @@ function AdminJobs() {
     }
 
     const getTrabajos = () => {
-       Axios.get("http://localhost:8888/jobs").then((response) => {
+       api.get("/jobs").then((response) => {
         const jsonData = response.data;
         setTrabajosList(jsonData);
        })
